@@ -186,13 +186,23 @@ CSP tidak bisa melindungi dari **hosting yang dibobol**, karena penyerang yang m
 
 ---
 
-## 8. Deploy aman ke Cloudflare Pages
+## 8. Deploy aman (Vercel)
 
-1. Buat akun Cloudflare, lalu **aktifkan 2FA sebelum melakukan hal lain**.
-2. Di laptop: `npm run build`. Folder `dist/` sudah berisi `_headers` dan `robots.txt`.
-3. Dashboard Cloudflare → **Workers & Pages** → **Create** → **Pages** → **Upload assets** (*Direct Upload*).
-4. Beri nama project, misalnya `kantong-xxxx`. Nama ini menjadi alamat `kantong-xxxx.pages.dev`. **Jangan diganti nanti**, karena data di iPhone terikat ke alamat ini.
-5. Upload isi folder `dist/`, lalu **Deploy**.
-6. Cek: `curl -I https://kantong-xxxx.pages.dev`, atau buka di securityheaders.com.
-7. Buka di **Safari** iPhone → **Share** → **Add to Home Screen**.
-8. Untuk update: build ulang, lalu upload lagi ke **project yang sama**.
+Kantong di-deploy ke **https://kantong-p1k2.vercel.app** dari repo GitHub privat `latverian/kantong`.
+
+1. Akun GitHub dan Vercel memakai **2FA** (passkey atau kode dari app Passwords iPhone).
+2. Izin GitHub App Vercel dibatasi ke **satu repo saja** (*Only select repositories → kantong*). Ini prinsip *least privilege*.
+3. Setiap `git push` ke `main`:
+   - **GitHub Actions** menjalankan test, build (gagal kalau `vercel.json` tidak sinkron dengan CSP), `npm audit`, dan simulasi serangan.
+   - **Vercel** build dan deploy otomatis. Header keamanan dibaca dari `vercel.json`.
+4. Cek setelah deploy:
+   ```bash
+   curl -I https://kantong-p1k2.vercel.app
+   node scripts/attack-test.mjs https://kantong-p1k2.vercel.app   # 11 pemeriksaan (eval hanya di lokal/CI)
+   ```
+5. Alamat internal deployment (misalnya `kantong-latverian.vercel.app`) dilindungi **Vercel Authentication**. Hanya pemilik akun yang bisa membukanya.
+6. **Waspada domain mirip.** `kantong.vercel.app` dan `kantongku.vercel.app` adalah app **orang lain**. Selalu pasang dari `kantong-p1k2.vercel.app`.
+
+**Rollback** (misalnya saat respons insiden): Vercel → project → **Deployments** → pilih deploy lama yang aman → **Promote to Production**.
+
+**Alternatif hosting:** Cloudflare Pages atau Netlify. Cukup upload folder `dist/`; keduanya membaca `dist/_headers` yang dibuat saat build.

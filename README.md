@@ -7,6 +7,8 @@
 **A local-first money manager for two currencies: Indonesian Rupiah and New Taiwan Dollar.**
 Installable PWA for iPhone · works offline · no server, no account, your data never leaves the phone.
 
+**Live:** [kantong-p1k2.vercel.app](https://kantong-p1k2.vercel.app)
+
 [![CI](https://github.com/latverian/kantong/actions/workflows/ci.yml/badge.svg)](https://github.com/latverian/kantong/actions/workflows/ci.yml)
 ![React](https://img.shields.io/badge/React-19-149ECA?logo=react&logoColor=white)
 ![TypeScript](https://img.shields.io/badge/TypeScript-5.9-3178C6?logo=typescript&logoColor=white)

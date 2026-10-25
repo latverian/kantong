@@ -10,12 +10,16 @@ import path from 'node:path';
 import { chromium } from 'playwright';
 
 const base = process.argv[2] ?? 'http://localhost:4174';
+// The eval check needs a probe file served next to the app, so it only runs against the local server.
+const local = /^http:\/\/(localhost|127\.0\.0\.1)/.test(base);
 const evalProbe = path.resolve('dist/__evaltest.js');
-fs.writeFileSync(
-  evalProbe,
-  "try { eval('1+1'); window.__eval = 'NOT blocked'; } catch (e) { window.__eval = 'blocked'; }\n" +
-    "try { new Function('return 1')(); window.__fn = 'NOT blocked'; } catch (e) { window.__fn = 'blocked'; }\n",
-);
+if (local) {
+  fs.writeFileSync(
+    evalProbe,
+    "try { eval('1+1'); window.__eval = 'NOT blocked'; } catch (e) { window.__eval = 'blocked'; }\n" +
+      "try { new Function('return 1')(); window.__fn = 'NOT blocked'; } catch (e) { window.__fn = 'blocked'; }\n",
+  );
+}
 
 const browser = await chromium.launch();
 const ctx = await browser.newContext({ viewport: { width: 390, height: 844 }, isMobile: true, hasTouch: true, locale: 'id-ID', acceptDownloads: true });
@@ -83,7 +87,8 @@ try {
   check('inline <script> blocked (script-src)', inline === false);
 
   // 5. eval / new Function, run from a same-origin file so the CSP applies
-  const ev = await page.evaluate(
+  if (!local) console.log('(eval check skipped: needs the local server, it runs in CI)');
+  const ev = !local ? ['blocked', 'blocked'] : await page.evaluate(
     () =>
       new Promise((res) => {
         const s = document.createElement('script');
@@ -93,7 +98,7 @@ try {
         document.body.appendChild(s);
       }),
   );
-  check('eval() and new Function() blocked', ev[0] === 'blocked' && ev[1] === 'blocked', ev.join(', '));
+  if (local) check('eval() and new Function() blocked', ev[0] === 'blocked' && ev[1] === 'blocked', ev.join(', '));
 
   // 6. Clickjacking: another site frames the app
   const evil = await ctx.newPage();
