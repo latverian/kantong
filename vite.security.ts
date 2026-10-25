@@ -111,8 +111,14 @@ export function securityHeaders(): Plugin {
       const expected = vercelJson(styleHashes);
       const current = fs.existsSync(vercelPath) ? fs.readFileSync(vercelPath, 'utf8') : '';
       if (current === expected) return;
-      if (process.env.CI || process.env.VERCEL) {
-        // On Vercel the headers were already read from the committed file: a stale one would ship a wrong CSP.
+      if (process.env.VERCEL) {
+        // Vercel reads (and may rewrite) vercel.json before the build runs, so the copy here is not the
+        // committed file. The GitHub CI job below is the real guard: it fails if the committed file is stale.
+        console.warn(`[security] skipping vercel.json check on Vercel (found ${current ? `${current.length} bytes` : 'no file'}); CI verifies it.`);
+        return;
+      }
+      if (process.env.CI) {
+        // A stale vercel.json would make Vercel serve a CSP that does not match this build.
         throw new Error('vercel.json is out of date with the build. Run `npm run build` locally and commit vercel.json.');
       }
       fs.writeFileSync(vercelPath, expected);
