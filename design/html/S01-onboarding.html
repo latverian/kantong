@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Kantong - Rekening Kamu (Langkah 2 dari 3)</title>
+<!-- Plus Jakarta Sans font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS v3 -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-secondary-container": "#57657a",
+            "on-primary": "#FFFFFF",
+            "text-secondary": "#475569",
+            "currency-idr": "#0369A1",
+            "outline-variant": "#c6c6cd",
+            "on-accent": "#FFFFFF",
+            "on-surface": "#1b1b1d",
+            "text-disabled": "#94A3B8",
+            "surface-dim": "#dcd9db",
+            "surface": "#FFFFFF",
+            "surface-container-high": "#eae7e9",
+            "on-tertiary-container": "#968065",
+            "on-secondary": "#ffffff",
+            "primary-fixed": "#dce2f7",
+            "on-secondary-fixed-variant": "#3a485b",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "outline": "#E3E6EC",
+            "on-secondary-fixed": "#0d1c2e",
+            "primary-fixed-dim": "#c0c6db",
+            "text-primary": "#0F172A",
+            "secondary": "#515f74",
+            "expense": "#B91C1C",
+            "surface-container": "#f0edee",
+            "on-tertiary-fixed": "#261906",
+            "error-container": "#ffdad6",
+            "primary": "#0F172A",
+            "inverse-surface": "#303031",
+            "interest-container": "#D1FAE5",
+            "on-background": "#1b1b1d",
+            "secondary-fixed-dim": "#b9c7df",
+            "error": "#ba1a1a",
+            "on-primary-fixed": "#141b2b",
+            "surface-container-low": "#f6f3f4",
+            "surface-muted": "#EEF0F4",
+            "transfer": "#475569",
+            "surface-container-lowest": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "secondary-fixed": "#d5e3fc",
+            "expense-container": "#FEE2E2",
+            "primary-container": "#141b2b",
+            "currency-ntd-container": "#EDE9FE",
+            "surface-tint": "#575e70",
+            "inverse-on-surface": "#f3f0f1",
+            "warning": "#B45309",
+            "tertiary-container": "#261906",
+            "income": "#15803D",
+            "currency-idr-container": "#E0F2FE",
+            "on-primary-container": "#7d8497",
+            "surface-variant": "#e5e2e3",
+            "on-error-container": "#93000a",
+            "tertiary-fixed": "#f9debf",
+            "currency-ntd-text": "#6D28D9",
+            "on-surface-variant": "#45464c",
+            "background": "#F4F5F9",
+            "secondary-container": "#d5e3fc",
+            "inverse-primary": "#c0c6db",
+            "warning-container": "#FEF3C7",
+            "on-error": "#ffffff",
+            "tertiary": "#000000",
+            "on-tertiary-fixed-variant": "#55442d",
+            "interest": "#047857",
+            "surface-bright": "#fcf8fa",
+            "currency-ntd": "#7C3AED",
+            "surface-container-highest": "#e5e2e3",
+            "on-primary-fixed-variant": "#404758"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-2xl": "32px",
+            "space-xl": "24px",
+            "space-md": "12px",
+            "space-lg": "16px",
+            "space-sm": "8px",
+            "space-xs": "4px",
+            "margin": "16px",
+            "gutter": "16px"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "display-amount": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "title-md": ["16px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+      -webkit-font-smoothing: antialiased;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+    .material-symbols-outlined.fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 20;
+    }
+    /* Hide scrollbars cleanly */
+    ::-webkit-scrollbar {
+      display: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary flex justify-center items-center min-h-screen antialiased p-0 md:py-6">
+<!-- iPhone 14 / 15 Viewport Wrapper (390 x 844) -->
+<main class="w-full max-w-[390px] h-screen md:h-[844px] bg-background flex flex-col justify-between relative overflow-hidden md:rounded-[48px] md:shadow-[0_24px_50px_rgba(15,23,42,0.12)] md:border-[8px] md:border-text-primary/5">
+<!-- iOS Dynamic Island & Status Bar Space -->
+<header class="w-full pt-3 px-6 pb-1 flex justify-between items-center text-text-primary shrink-0 select-none">
+<span class="font-semibold text-[14px] tracking-tight ml-1">9:41</span>
+<div class="flex items-center gap-1.5 text-text-primary">
+<span class="material-symbols-outlined text-[17px] leading-none" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[16px] leading-none" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[20px] leading-none" data-icon="battery_full">battery_full</span>
+</div>
+</header>
+<!-- Navigation Bar: Back & Step Indicator -->
+<nav class="px-5 pt-2 pb-2 flex items-center justify-between shrink-0">
+<button aria-label="Kembali" class="w-10 h-10 -ml-2 rounded-full flex items-center justify-center text-text-primary hover:bg-surface-muted active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="chevron_left">chevron_left</span>
+</button>
+<!-- 3-Step Dots Progress Indicator (Step 2 active) -->
+<div aria-label="Langkah 2 dari 3" class="flex items-center gap-1.5">
+<span class="w-2 h-2 rounded-full bg-outline-variant/60"></span>
+<span class="w-5 h-2 rounded-full bg-text-primary transition-all duration-300"></span>
+<span class="w-2 h-2 rounded-full bg-outline-variant/60"></span>
+</div>
+</nav>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 overflow-y-auto px-5 pt-2 pb-6 space-y-5">
+<!-- Screen Header Section -->
+<section class="space-y-1.5">
+<h1 class="font-headline-lg text-headline-lg text-text-primary tracking-tight">
+          Rekening kamu
+        </h1>
+<p class="font-body-md text-body-md text-text-secondary leading-relaxed">Tambah, ubah, atau hapus sesuai rekening yang kamu punya. Saldo awal bisa diisi sekarang atau nanti.</p>
+</section>
+<!-- Suggested Accounts Card Container (Inset Grouped) -->
+<section aria-label="Daftar Rekening yang Disarankan" class="bg-surface rounded-2xl border border-outline overflow-hidden divide-y divide-outline shadow-sm"><!-- Account 1: BCA -->
+<article class="p-3.5 flex items-center gap-3 transition-colors hover:bg-surface-muted/40">
+<!-- Icon Tile -->
+<div class="w-10 h-10 rounded-xl bg-currency-idr-container/60 text-currency-idr flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance">account_balance</span>
+</div>
+<!-- Account Details -->
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-text-primary truncate font-semibold">BCA</h2>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-body-sm text-body-sm text-text-secondary">Bank</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-caps text-[11px] bg-currency-idr-container text-currency-idr font-semibold leading-tight">IDR</span>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-1 shrink-0">
+<button class="text-right font-label-md text-label-md text-text-secondary hover:text-text-primary flex items-center py-1 pl-1 cursor-pointer" type="button">
+<span>Isi saldo</span>
+<span class="material-symbols-outlined text-[16px] ml-0.5" data-icon="chevron_right">chevron_right</span>
+</button>
+<button aria-label="Hapus rekening BCA" class="w-8 h-8 rounded-lg flex items-center justify-center text-expense hover:bg-expense-container/40 active:scale-95 transition-all cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</article>
+<!-- Account 2: SeaBank -->
+<article class="p-3.5 flex items-center gap-3 transition-colors hover:bg-surface-muted/40">
+<!-- Icon Tile -->
+<div class="w-10 h-10 rounded-xl bg-currency-idr-container/60 text-currency-idr flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance">account_balance</span>
+</div>
+<!-- Account Details -->
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-text-primary truncate font-semibold">SeaBank</h2>
+</div>
+<div class="flex items-center flex-wrap gap-1.5 mt-1">
+<span class="font-body-sm text-body-sm text-text-secondary">Bank</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-caps text-[11px] bg-currency-idr-container text-currency-idr font-semibold leading-tight">IDR</span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-label-caps text-[11px] bg-interest-container text-interest font-semibold leading-tight">
+<span class="material-symbols-outlined text-[12px] leading-none" data-icon="percent">percent</span>
+<span>Bunga harian</span>
+</span>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-1 shrink-0">
+<button class="text-right font-label-md text-label-md text-text-secondary hover:text-text-primary flex items-center py-1 pl-1 cursor-pointer" type="button">
+<span>Isi saldo</span>
+<span class="material-symbols-outlined text-[16px] ml-0.5" data-icon="chevron_right">chevron_right</span>
+</button>
+<button aria-label="Hapus rekening SeaBank" class="w-8 h-8 rounded-lg flex items-center justify-center text-expense hover:bg-expense-container/40 active:scale-95 transition-all cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</article>
+<!-- Account 3: Bank Jago -->
+<article class="p-3.5 flex items-center gap-3 transition-colors hover:bg-surface-muted/40">
+<!-- Icon Tile -->
+<div class="w-10 h-10 rounded-xl bg-currency-idr-container/60 text-currency-idr flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance">account_balance</span>
+</div>
+<!-- Account Details -->
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-text-primary truncate font-semibold">Bank Jago</h2>
+</div>
+<div class="flex items-center flex-wrap gap-1.5 mt-1">
+<span class="font-body-sm text-body-sm text-text-secondary">Bank</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-caps text-[11px] bg-currency-idr-container text-currency-idr font-semibold leading-tight">IDR</span>
+<span class="inline-flex items-center gap-0.5 px-2 py-0.5 rounded-full font-label-caps text-[11px] bg-interest-container text-interest font-semibold leading-tight">
+<span class="material-symbols-outlined text-[12px] leading-none" data-icon="percent">percent</span>
+<span>Bunga harian</span>
+</span>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-1 shrink-0">
+<button class="text-right font-label-md text-label-md text-text-secondary hover:text-text-primary flex items-center py-1 pl-1 cursor-pointer" type="button">
+<span>Isi saldo</span>
+<span class="material-symbols-outlined text-[16px] ml-0.5" data-icon="chevron_right">chevron_right</span>
+</button>
+<button aria-label="Hapus rekening Bank Jago" class="w-8 h-8 rounded-lg flex items-center justify-center text-expense hover:bg-expense-container/40 active:scale-95 transition-all cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</article>
+<!-- Account 4: Dompet NT$ -->
+<article class="p-3.5 flex items-center gap-3 transition-colors hover:bg-surface-muted/40">
+<!-- Icon Tile -->
+<div class="w-10 h-10 rounded-xl bg-currency-ntd-container/70 text-currency-ntd flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+</div>
+<!-- Account Details -->
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-text-primary truncate font-semibold">Dompet NT$</h2>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-body-sm text-body-sm text-text-secondary">Tunai</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-caps text-[11px] bg-currency-ntd-container text-currency-ntd font-semibold leading-tight">NTD</span>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-1 shrink-0">
+<button class="text-right font-label-md text-label-md text-text-secondary hover:text-text-primary flex items-center py-1 pl-1 cursor-pointer" type="button">
+<span>Isi saldo</span>
+<span class="material-symbols-outlined text-[16px] ml-0.5" data-icon="chevron_right">chevron_right</span>
+</button>
+<button aria-label="Hapus Dompet NT$" class="w-8 h-8 rounded-lg flex items-center justify-center text-expense hover:bg-expense-container/40 active:scale-95 transition-all cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</article>
+<!-- Account 5: Bank NT$ -->
+<article class="p-3.5 flex items-center gap-3 transition-colors hover:bg-surface-muted/40">
+<!-- Icon Tile -->
+<div class="w-10 h-10 rounded-xl bg-currency-ntd-container/70 text-currency-ntd flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="account_balance">account_balance</span>
+</div>
+<!-- Account Details -->
+<div class="flex-1 min-w-0 pr-1">
+<div class="flex items-center justify-between">
+<h2 class="font-title-md text-title-md text-text-primary truncate font-semibold">Bank NT$</h2>
+</div>
+<div class="flex items-center gap-2 mt-1">
+<span class="font-body-sm text-body-sm text-text-secondary">Bank</span>
+<span class="inline-flex items-center px-2 py-0.5 rounded-full font-label-caps text-[11px] bg-currency-ntd-container text-currency-ntd font-semibold leading-tight">NTD</span>
+</div>
+</div>
+<!-- Right Actions -->
+<div class="flex items-center gap-1 shrink-0">
+<button class="text-right font-label-md text-label-md text-text-secondary hover:text-text-primary flex items-center py-1 pl-1 cursor-pointer" type="button">
+<span>Isi saldo</span>
+<span class="material-symbols-outlined text-[16px] ml-0.5" data-icon="chevron_right">chevron_right</span>
+</button>
+<button aria-label="Hapus Bank NT$" class="w-8 h-8 rounded-lg flex items-center justify-center text-expense hover:bg-expense-container/40 active:scale-95 transition-all cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="delete">delete</span>
+</button>
+</div>
+</article></section>
+<!-- Add Custom Account Action -->
+<div class="pt-1"><button class="w-full border-2 border-dashed border-outline hover:border-outline-variant py-3.5 px-4 rounded-xl flex items-center justify-center gap-2 text-text-secondary hover:text-text-primary font-medium text-label-md active:scale-[0.99] transition-all bg-surface/40 hover:bg-surface cursor-pointer" type="button">
+<span class="material-symbols-outlined text-[18px]" data-icon="add">add</span>
+<span>Tambah rekening</span>
+</button></div>
+</div>
+<!-- Bottom Sticky Anchor Section: Privacy Guard & Primary Action -->
+<footer class="w-full px-5 pt-3 pb-2 bg-gradient-to-t from-background via-background to-background/90 shrink-0">
+<!-- Privacy Guarantee Note -->
+<!-- Ink Primary Action Button (52px tap height) -->
+<button class="w-full h-[52px] bg-text-primary text-on-primary rounded-xl font-label-lg text-label-lg font-semibold shadow-sm active:scale-[0.99] transition-transform duration-150 flex items-center justify-center" type="button">
+        Lanjut
+      </button>
+<!-- iOS Home Indicator -->
+<div aria-hidden="true" class="w-full flex justify-center pt-3 pb-1">
+<div class="w-32 h-1 bg-text-primary/20 rounded-full"></div>
+</div>
+</footer>
+</main>
+<!-- Interactive State Helper Script for Checkbox Toggle micro-interactions -->
+<script>
+    document.querySelectorAll('article').forEach(item => {
+      item.addEventListener('click', (e) => {
+        // Prevent toggle if clicking specifically on the "Isi saldo" button
+        if (e.target.closest('button')) return;
+        
+        const checkbox = item.querySelector('div:first-child');
+        const isChecked = checkbox.classList.contains('bg-text-primary');
+
+        if (isChecked) {
+          checkbox.className = 'w-5 h-5 rounded-md border border-outline-variant bg-surface flex items-center justify-center shrink-0 transition-all';
+          checkbox.innerHTML = '';
+        } else {
+          checkbox.className = 'w-5 h-5 rounded-md bg-text-primary text-surface flex items-center justify-center shrink-0 transition-all';
+          checkbox.innerHTML = '<span class="material-symbols-outlined text-[16px] font-bold" data-icon="check">check</span>';
+        }
+      });
+    });
+  </script>
+</body></html>

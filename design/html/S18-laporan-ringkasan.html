@@ -1,0 +1,547 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Laporan - Kantong</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "primary": "#111827",
+            "on-primary": "#FFFFFF",
+            "background": "#F4F5F9",
+            "surface": "#FFFFFF",
+            "surface-muted": "#EEF0F4",
+            "outline": "#E3E6EC",
+            "text-primary": "#0F172A",
+            "text-secondary": "#475569",
+            "text-disabled": "#94A3B8",
+            "income": "#15803D",
+            "expense": "#B91C1C",
+            "expense-container": "#FEE2E2",
+            "transfer": "#475569",
+            "interest": "#047857",
+            "interest-container": "#D1FAE5",
+            "warning": "#B45309",
+            "warning-container": "#FEF3C7",
+            "currency-idr": "#0369A1",
+            "currency-idr-container": "#E0F2FE",
+            "currency-ntd": "#7C3AED",
+            "currency-ntd-text": "#6D28D9",
+            "currency-ntd-container": "#EDE9FE"
+          },
+          fontFamily: {
+            sans: ["Plus Jakarta Sans", "sans-serif"]
+          },
+          fontSize: {
+            "display-amount": ["34px", { lineHeight: "1.1", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-lg": ["28px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "headline-md": ["20px", { lineHeight: "1.3", fontWeight: "700" }],
+            "title-md": ["17px", { lineHeight: "1.35", fontWeight: "600" }],
+            "amount-lg": ["22px", { lineHeight: "1.2", letterSpacing: "-0.01em", fontWeight: "700" }],
+            "amount-md": ["16px", { lineHeight: "1.3", fontWeight: "600" }],
+            "amount-sm": ["13px", { lineHeight: "1.3", fontWeight: "600" }],
+            "body-lg": ["16px", { lineHeight: "1.5", fontWeight: "400" }],
+            "body-md": ["15px", { lineHeight: "1.5", fontWeight: "400" }],
+            "body-sm": ["13px", { lineHeight: "1.4", fontWeight: "400" }],
+            "label-lg": ["16px", { lineHeight: "1.2", fontWeight: "600" }],
+            "label-md": ["13px", { lineHeight: "1.2", fontWeight: "600" }],
+            "label-caps": ["11px", { lineHeight: "1.2", letterSpacing: "0.06em", fontWeight: "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 24px);
+    }
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 44px);
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary antialiased min-h-screen">
+<!-- Mobile Frame (390px base equivalent max-w-md) -->
+<main class="w-full bg-background min-h-screen flex flex-col relative selection:bg-currency-ntd-container">
+<!-- 1. iOS Status Bar -->
+<header class="w-full pt-safe px-4 flex justify-between items-center text-text-primary select-none z-30">
+<div class="text-[14px] font-bold tracking-tight">9:41</div>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[17px] leading-none">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[17px] leading-none">wifi</span>
+<span class="material-symbols-outlined text-[19px] leading-none">battery_full</span>
+</div>
+</header>
+<!-- 2. Screen Header & Actions -->
+<section class="px-4 pt-3 pb-1 flex justify-between items-center">
+<h1 class="text-headline-lg font-bold text-text-primary tracking-tight">Laporan</h1>
+<button aria-label="Ekspor Laporan" class="w-9 h-9 rounded-full bg-surface border border-outline flex items-center justify-center text-text-primary active:scale-95 transition-transform hover:bg-surface-muted" type="button">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+</button>
+</section>
+<!-- 3. Top Segmented Control (Ringkasan · Budget) -->
+<section class="px-4 pt-2 pb-2">
+<div class="bg-surface-muted p-1 rounded-xl flex items-center gap-1 border border-outline/40">
+<button class="flex-1 py-1.5 text-center text-label-md text-text-primary font-semibold bg-surface rounded-lg shadow-sm border border-outline/30 transition-all" type="button">
+          Ringkasan
+        </button>
+<button class="flex-1 py-1.5 text-center text-label-md text-text-secondary rounded-lg active:opacity-70 transition-all hover:text-text-primary" type="button">
+          Budget
+        </button>
+</div>
+</section>
+<!-- 4. Month Switcher & Currency Toggle -->
+<section class="px-4 pb-3 space-y-2.5">
+<!-- Month Switcher Button -->
+<div class="flex items-center justify-center">
+<div class="inline-flex items-center justify-between bg-surface border border-outline rounded-full px-3 py-1.5 shadow-[0_1px_2px_rgba(0,0,0,0.02)] gap-2">
+<button aria-label="Bulan sebelumnya" class="w-7 h-7 flex items-center justify-center rounded-full text-text-secondary hover:text-text-primary active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-[18px]">chevron_left</span>
+</button>
+<div class="flex items-center space-x-1.5 px-1">
+<span class="material-symbols-outlined text-[16px] text-text-secondary">calendar_today</span>
+<span class="text-label-md font-semibold text-text-primary">Oktober 2026</span>
+</div>
+<button aria-label="Bulan berikutnya" class="w-7 h-7 flex items-center justify-center rounded-full text-text-disabled cursor-not-allowed" disabled="">
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</button>
+</div>
+</div>
+<!-- Currency Switcher Segmented Control (NTD Selected with Violet Theme) -->
+<div class="bg-surface-muted p-1 rounded-xl flex items-center gap-1 border border-outline/40">
+<button class="flex-1 py-1.5 text-center text-label-md text-text-secondary rounded-lg active:opacity-70 transition-all hover:text-text-primary font-medium" type="button">
+          IDR
+        </button>
+<button class="flex-1 py-1.5 text-center text-label-md font-semibold bg-currency-ntd text-white rounded-lg shadow-sm transition-all flex items-center justify-center space-x-1" type="button">
+<span>NTD</span>
+</button>
+<button class="flex-1 py-1.5 text-center text-label-md text-text-secondary rounded-lg active:opacity-70 transition-all hover:text-text-primary font-medium" type="button">
+          Gabungan
+        </button>
+</div>
+</section>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 px-4 pb-28 space-y-3.5 overflow-y-auto">
+<!-- 5. Three Stat Tiles: Masuk, Keluar, Bersih -->
+<section class="grid grid-cols-3 gap-2.5">
+<!-- Masuk -->
+<article class="bg-surface p-3 rounded-2xl border border-outline flex flex-col justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center space-x-1 text-income mb-1">
+<span class="material-symbols-outlined text-[15px]">arrow_downward</span>
+<span class="text-label-caps uppercase tracking-wider text-text-secondary">Masuk</span>
+</div>
+<div>
+<p class="text-[15px] font-bold text-income tabular-nums tracking-tight leading-snug">+NT$32.000</p>
+<p class="text-[11px] text-text-disabled mt-0.5">1 transaksi</p>
+</div>
+</article>
+<!-- Keluar -->
+<article class="bg-surface p-3 rounded-2xl border border-outline flex flex-col justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center space-x-1 text-expense mb-1">
+<span class="material-symbols-outlined text-[15px]">arrow_upward</span>
+<span class="text-label-caps uppercase tracking-wider text-text-secondary">Keluar</span>
+</div>
+<div>
+<p class="text-[15px] font-bold text-expense tabular-nums tracking-tight leading-snug">−NT$12.480</p>
+<p class="text-[11px] text-text-disabled mt-0.5">28 transaksi</p>
+</div>
+</article>
+<!-- Bersih -->
+<article class="bg-surface p-3 rounded-2xl border border-outline flex flex-col justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div class="flex items-center space-x-1 text-primary mb-1">
+<span class="material-symbols-outlined text-[15px]">account_balance_wallet</span>
+<span class="text-label-caps uppercase tracking-wider text-text-secondary">Bersih</span>
+</div>
+<div>
+<p class="text-[15px] font-bold text-text-primary tabular-nums tracking-tight leading-snug">+NT$19.520</p>
+<p class="text-[11px] text-income font-medium mt-0.5">+61% rasio</p>
+</div>
+</article>
+</section>
+<!-- 6. Card: Pengeluaran per kategori (Donut Chart + Detailed Legend) -->
+<section class="bg-surface rounded-2xl border border-outline p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-4">
+<header class="flex items-center justify-between">
+<div>
+<h3 class="text-title-md font-semibold text-text-primary">Pengeluaran per kategori</h3>
+<p class="text-body-sm text-text-secondary mt-0.5">Berdasarkan pos pengeluaran NTD</p>
+</div>
+<span class="text-label-caps uppercase font-bold px-2 py-0.5 rounded-full bg-currency-ntd-container text-currency-ntd-text">
+            5 Pos
+          </span>
+</header>
+<!-- Donut & Legend Layout -->
+<div class="flex flex-col sm:flex-row items-center gap-4 pt-1">
+<!-- Donut SVG Graphic -->
+<div class="relative w-40 h-40 flex-shrink-0 flex items-center justify-center">
+<svg class="w-full h-full transform -rotate-90" viewbox="0 0 160 160">
+<!-- Background Ring -->
+<circle cx="80" cy="80" fill="none" r="58" stroke="#EEF0F4" stroke-width="18"></circle>
+<!-- Segments (Circumference = 2 * π * 58 ≈ 364.4) -->
+<!-- 1. Tempat Tinggal (40% ≈ 145.8) color: #7C3AED (Violet) -->
+<circle cx="80" cy="80" fill="none" r="58" stroke="#7C3AED" stroke-dasharray="145.8 218.6" stroke-dashoffset="0" stroke-linecap="round" stroke-width="18"></circle>
+<!-- 2. Makan & Minum (35% ≈ 127.5) color: #F59E0B (Amber) offset: -145.8 -->
+<circle cx="80" cy="80" fill="none" r="58" stroke="#F59E0B" stroke-dasharray="127.5 236.9" stroke-dashoffset="-145.8" stroke-linecap="round" stroke-width="18"></circle>
+<!-- 3. Transportasi (11% ≈ 40.1) color: #0EA5E9 (Sky) offset: -273.3 -->
+<circle cx="80" cy="80" fill="none" r="58" stroke="#0EA5E9" stroke-dasharray="40.1 324.3" stroke-dashoffset="-273.3" stroke-linecap="round" stroke-width="18"></circle>
+<!-- 4. Belanja Harian (10% ≈ 36.4) color: #EC4899 (Pink) offset: -313.4 -->
+<circle cx="80" cy="80" fill="none" r="58" stroke="#EC4899" stroke-dasharray="36.4 328.0" stroke-dashoffset="-313.4" stroke-linecap="round" stroke-width="18"></circle>
+<!-- 5. Lainnya (4% ≈ 14.6) color: #94A3B8 (Slate) offset: -349.8 -->
+<circle cx="80" cy="80" fill="none" r="58" stroke="#94A3B8" stroke-dasharray="14.6 349.8" stroke-dashoffset="-349.8" stroke-linecap="round" stroke-width="18"></circle>
+</svg>
+<!-- Center Label in Donut -->
+<div class="absolute inset-0 flex flex-col items-center justify-center text-center pointer-events-none">
+<span class="text-[11px] font-semibold text-text-secondary uppercase tracking-wider">Total</span>
+<span class="text-[17px] font-bold text-text-primary tabular-nums tracking-tight">NT$12.480</span>
+</div>
+</div>
+<!-- Legend Rows -->
+<div class="w-full flex-1 space-y-2.5">
+<!-- Item 1: Sewa -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#7C3AED] flex-shrink-0"></span>
+<span class="text-text-primary font-medium truncate max-w-[130px]">Tempat Tinggal / Sewa</span>
+</div>
+<div class="text-right tabular-nums">
+<span class="font-semibold text-text-primary">NT$5.000</span>
+<span class="text-text-secondary text-xs ml-1 font-normal">40%</span>
+</div>
+</div>
+<!-- Item 2: Makan & Minum -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#F59E0B] flex-shrink-0"></span>
+<span class="text-text-primary font-medium truncate max-w-[130px]">Makan &amp; Minum</span>
+</div>
+<div class="text-right tabular-nums">
+<span class="font-semibold text-text-primary">NT$4.380</span>
+<span class="text-text-secondary text-xs ml-1 font-normal">35%</span>
+</div>
+</div>
+<!-- Item 3: Transportasi -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#0EA5E9] flex-shrink-0"></span>
+<span class="text-text-primary font-medium truncate max-w-[130px]">Transportasi</span>
+</div>
+<div class="text-right tabular-nums">
+<span class="font-semibold text-text-primary">NT$1.320</span>
+<span class="text-text-secondary text-xs ml-1 font-normal">11%</span>
+</div>
+</div>
+<!-- Item 4: Belanja Harian -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#EC4899] flex-shrink-0"></span>
+<span class="text-text-primary font-medium truncate max-w-[130px]">Belanja Harian</span>
+</div>
+<div class="text-right tabular-nums">
+<span class="font-semibold text-text-primary">NT$1.294</span>
+<span class="text-text-secondary text-xs ml-1 font-normal">10%</span>
+</div>
+</div>
+<!-- Item 5: Lainnya -->
+<div class="flex items-center justify-between text-body-sm">
+<div class="flex items-center space-x-2">
+<span class="w-2.5 h-2.5 rounded-full bg-[#94A3B8] flex-shrink-0"></span>
+<span class="text-text-secondary truncate max-w-[130px]">Lainnya (2 kat.)</span>
+</div>
+<div class="text-right tabular-nums">
+<span class="font-semibold text-text-primary">NT$486</span>
+<span class="text-text-secondary text-xs ml-1 font-normal">4%</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- 7. Card: 6 bulan terakhir (Grouped Bar Chart: Income vs Expense) -->
+<section class="bg-surface rounded-2xl border border-outline p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3">
+<header class="flex items-center justify-between">
+<div>
+<h3 class="text-title-md font-semibold text-text-primary">6 bulan terakhir</h3>
+<p class="text-body-sm text-text-secondary mt-0.5">Perbandingan arus kas bulanan (NTD)</p>
+</div>
+<div class="flex items-center space-x-3 text-xs">
+<div class="flex items-center space-x-1">
+<span class="w-2.5 h-2.5 rounded-sm bg-income"></span>
+<span class="text-text-secondary font-medium">Masuk</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="w-2.5 h-2.5 rounded-sm bg-expense"></span>
+<span class="text-text-secondary font-medium">Keluar</span>
+</div>
+</div>
+</header>
+<!-- Bar Chart Visual (May - Oct) -->
+<div class="pt-3 pb-1">
+<!-- Chart Grid & Bars Container -->
+<div class="relative h-40 flex items-end justify-between px-2 border-b border-outline">
+<!-- Subtle Horizontal Guideline -->
+<div class="absolute inset-x-0 top-6 border-b border-dashed border-outline/60 pointer-events-none"></div>
+<div class="absolute inset-x-0 top-18 border-b border-dashed border-outline/60 pointer-events-none"></div>
+<!-- Mei: In 30k, Out 13.5k -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-end space-x-1 h-32">
+<div class="w-3 rounded-t-sm bg-income transition-all" style="height: 75%;" title="Mei Masuk: NT$30.000"></div>
+<div class="w-3 rounded-t-sm bg-expense transition-all" style="height: 35%;" title="Mei Keluar: NT$13.500"></div>
+</div>
+<span class="text-[11px] font-medium text-text-secondary mt-2">Mei</span>
+</div>
+<!-- Jun: In 31k, Out 14.2k -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-end space-x-1 h-32">
+<div class="w-3 rounded-t-sm bg-income transition-all" style="height: 77%;" title="Jun Masuk: NT$31.000"></div>
+<div class="w-3 rounded-t-sm bg-expense transition-all" style="height: 38%;" title="Jun Keluar: NT$14.200"></div>
+</div>
+<span class="text-[11px] font-medium text-text-secondary mt-2">Jun</span>
+</div>
+<!-- Jul: In 30.5k, Out 13.0k -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-end space-x-1 h-32">
+<div class="w-3 rounded-t-sm bg-income transition-all" style="height: 76%;" title="Jul Masuk: NT$30.500"></div>
+<div class="w-3 rounded-t-sm bg-expense transition-all" style="height: 34%;" title="Jul Keluar: NT$13.000"></div>
+</div>
+<span class="text-[11px] font-medium text-text-secondary mt-2">Jul</span>
+</div>
+<!-- Agu: In 32k, Out 15.6k -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-end space-x-1 h-32">
+<div class="w-3 rounded-t-sm bg-income transition-all" style="height: 80%;" title="Agu Masuk: NT$32.000"></div>
+<div class="w-3 rounded-t-sm bg-expense transition-all" style="height: 42%;" title="Agu Keluar: NT$15.600"></div>
+</div>
+<span class="text-[11px] font-medium text-text-secondary mt-2">Agu</span>
+</div>
+<!-- Sep: In 32k, Out 13.8k -->
+<div class="flex flex-col items-center flex-1">
+<div class="flex items-end space-x-1 h-32">
+<div class="w-3 rounded-t-sm bg-income transition-all" style="height: 80%;" title="Sep Masuk: NT$32.000"></div>
+<div class="w-3 rounded-t-sm bg-expense transition-all" style="height: 37%;" title="Sep Keluar: NT$13.800"></div>
+</div>
+<span class="text-[11px] font-medium text-text-secondary mt-2">Sep</span>
+</div>
+<!-- Okt (Active Highlight): In 32k, Out 12.48k -->
+<div class="flex flex-col items-center flex-1 relative">
+<div class="absolute -top-3 left-1/2 -translate-x-1/2 bg-text-primary text-white text-[9px] font-bold px-1 rounded tabular-nums">
+                AKTIF
+              </div>
+<div class="flex items-end space-x-1 h-32">
+<div class="w-3 rounded-t-sm bg-income ring-2 ring-income/30 transition-all" style="height: 82%;" title="Okt Masuk: NT$32.000"></div>
+<div class="w-3 rounded-t-sm bg-expense ring-2 ring-expense/30 transition-all" style="height: 33%;" title="Okt Keluar: NT$12.480"></div>
+</div>
+<span class="text-[11px] font-bold text-text-primary mt-2">Okt</span>
+</div>
+</div>
+<!-- Bottom Summary Caption for October -->
+<div class="mt-3 flex items-center justify-between text-body-sm bg-surface-muted/50 p-2.5 rounded-xl border border-outline/40">
+<span class="text-text-secondary text-xs">Oktober 2026:</span>
+<div class="flex items-center space-x-3 text-xs tabular-nums font-semibold">
+<span class="text-income">+NT$32.000</span>
+<span class="text-text-disabled">|</span>
+<span class="text-expense">−NT$12.480</span>
+</div>
+</div>
+</div>
+</section>
+<!-- 8. Card: Kekayaan bersih (Net Worth Big Total + Line Chart May–Oct) -->
+<section class="bg-surface rounded-2xl border border-outline p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3">
+<div>
+<span class="text-label-caps uppercase tracking-wider text-text-secondary font-bold">Kekayaan Bersih</span>
+<div class="mt-1 flex items-baseline justify-between flex-wrap gap-1">
+<h2 class="text-display-amount font-bold text-text-primary tabular-nums tracking-tight">
+              ≈ Rp44.538.200
+            </h2>
+</div>
+<!-- Trend indicator -->
+<div class="flex items-center space-x-1 text-income text-body-sm font-semibold mt-1">
+<span class="material-symbols-outlined text-[16px]">trending_up</span>
+<span class="tabular-nums">+Rp8.947.480 (+25,1%) dari bulan lalu</span>
+</div>
+</div>
+<!-- SVG Line Chart (Rising Trend May to Oct: 28M -> 44.5M) -->
+<div class="pt-2">
+<div class="relative w-full h-32">
+<svg class="w-full h-full overflow-visible" preserveaspectratio="none" viewbox="0 0 320 100">
+<defs>
+<lineargradient id="netWorthGradient" x1="0" x2="0" y1="0" y2="1">
+<stop offset="0%" stop-color="#111827" stop-opacity="0.14"></stop>
+<stop offset="100%" stop-color="#111827" stop-opacity="0.0"></stop>
+</lineargradient>
+</defs>
+<!-- Subtle Background Guidelines -->
+<line stroke="#EEF0F4" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="320" y1="20" y2="20"></line>
+<line stroke="#EEF0F4" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="320" y1="55" y2="55"></line>
+<line stroke="#EEF0F4" stroke-dasharray="3,3" stroke-width="1" x1="0" x2="320" y1="90" y2="90"></line>
+<!-- Area Fill Under Path -->
+<!-- Points: May(10,82), Jun(70,75), Jul(130,68), Aug(190,56), Sep(250,45), Oct(310,15) -->
+<path d="M 10,82 L 70,75 L 130,68 L 190,56 L 250,45 L 310,15 L 310,100 L 10,100 Z" fill="url(#netWorthGradient)"></path>
+<!-- Primary Ink Trend Line -->
+<path d="M 10,82 L 70,75 L 130,68 L 190,56 L 250,45 L 310,15" fill="none" stroke="#111827" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+<!-- Subtle Data Dots -->
+<circle cx="10" cy="82" fill="#FFFFFF" r="3" stroke="#111827" stroke-width="1.5"></circle>
+<circle cx="70" cy="75" fill="#FFFFFF" r="3" stroke="#111827" stroke-width="1.5"></circle>
+<circle cx="130" cy="68" fill="#FFFFFF" r="3" stroke="#111827" stroke-width="1.5"></circle>
+<circle cx="190" cy="56" fill="#FFFFFF" r="3" stroke="#111827" stroke-width="1.5"></circle>
+<circle cx="250" cy="45" fill="#FFFFFF" r="3" stroke="#111827" stroke-width="1.5"></circle>
+<!-- Active Last Point (October) with Glow Pulse -->
+<circle cx="310" cy="15" fill="#111827" r="5" stroke="#FFFFFF" stroke-width="2"></circle>
+</svg>
+</div>
+<!-- Line Chart X-Axis Labels -->
+<div class="flex justify-between items-center text-[11px] text-text-secondary pt-1 px-1 tabular-nums font-medium">
+<span>Mei</span>
+<span>Jun</span>
+<span>Jul</span>
+<span>Agu</span>
+<span>Sep ≈35,6 jt</span>
+<span class="font-bold text-text-primary">Okt ≈44,5 jt</span>
+</div>
+</div>
+<!-- Footnote Formula Explainer -->
+<footer class="pt-2 border-t border-outline/50 flex items-center justify-between text-body-sm text-text-secondary">
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[15px] text-text-disabled">info</span>
+<span class="text-xs">Saldo + piutang − utang · 1 NT$ = Rp512</span>
+</div>
+<span class="material-symbols-outlined text-[16px] text-text-disabled">chevron_right</span>
+</footer>
+</section>
+<!-- 9. Card: Kirim ke Indonesia (Remittance Insight) -->
+<section class="bg-surface rounded-2xl border border-outline p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-2.5">
+<header class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<div class="w-8 h-8 rounded-full bg-currency-idr-container text-currency-idr flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">send</span>
+</div>
+<div>
+<h3 class="text-title-md font-semibold text-text-primary">Kirim ke Indonesia</h3>
+<p class="text-body-sm text-text-secondary text-xs">Transfer valuta bulan ini</p>
+</div>
+</div>
+<span class="text-label-caps font-bold px-2 py-0.5 rounded-full bg-surface-muted text-text-secondary">
+            1 Transfer
+          </span>
+</header>
+<div class="bg-surface-muted/60 p-3 rounded-xl border border-outline/50 space-y-1.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2 font-semibold text-[15px] text-text-primary tabular-nums">
+<span>NT$5.000</span>
+<span class="material-symbols-outlined text-[16px] text-text-disabled">arrow_forward</span>
+<span class="text-currency-idr font-bold">Rp2.550.000</span>
+</div>
+<span class="text-[11px] font-medium text-text-secondary bg-surface px-2 py-0.5 rounded border border-outline/40">23 Okt</span>
+</div>
+<div class="flex items-center justify-between text-xs text-text-secondary pt-0.5">
+<div class="flex items-center space-x-1.5 tabular-nums">
+<span>Kurs rata-rata <strong class="text-text-primary">Rp510</strong></span>
+<span>·</span>
+<span>Pasar <strong class="text-text-primary">Rp512</strong></span>
+</div>
+<span class="text-expense font-medium tabular-nums">Selisih −Rp10.000</span>
+</div>
+</div>
+</section>
+<!-- 10. Card: Bunga diterima (IDR) (Daily Interest Earned + Mini Bars) -->
+<section class="bg-surface rounded-2xl border border-outline p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-2.5">
+<div class="w-8 h-8 rounded-full bg-interest-container text-interest flex items-center justify-center">
+<span class="material-symbols-outlined text-[18px]">percent</span>
+</div>
+<div>
+<h3 class="text-title-md font-semibold text-text-primary">Bunga diterima (IDR)</h3>
+<p class="text-body-sm text-text-secondary text-xs">Dari SeaBank &amp; Bank Jago</p>
+</div>
+</div>
+<span class="text-amount-md font-bold text-interest tabular-nums">
+            +Rp43.240
+          </span>
+</div>
+<!-- Mini Emerald Bar Chart (6 Months: May - Oct) -->
+<div class="bg-interest-container/30 rounded-xl p-3 border border-interest/15 space-y-2">
+<div class="flex items-center justify-between text-xs">
+<span class="text-text-secondary font-medium">Bulan ini</span>
+<span class="text-interest font-bold tabular-nums">+Rp43.240 bulan ini</span>
+</div>
+<div class="h-16 flex items-end justify-between gap-2 pt-2 px-1 border-b border-interest/20">
+<!-- May: Rp32k -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-interest/50 rounded-t-sm" style="height: 55%;" title="Mei: Rp32.000"></div>
+<span class="text-[10px] text-text-secondary mt-1">Mei</span>
+</div>
+<!-- Jun: Rp34k -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-interest/55 rounded-t-sm" style="height: 60%;" title="Jun: Rp34.500"></div>
+<span class="text-[10px] text-text-secondary mt-1">Jun</span>
+</div>
+<!-- Jul: Rp37k -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-interest/65 rounded-t-sm" style="height: 68%;" title="Jul: Rp37.200"></div>
+<span class="text-[10px] text-text-secondary mt-1">Jul</span>
+</div>
+<!-- Aug: Rp39k -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-interest/75 rounded-t-sm" style="height: 75%;" title="Agu: Rp39.800"></div>
+<span class="text-[10px] text-text-secondary mt-1">Agu</span>
+</div>
+<!-- Sep: Rp41k -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-interest/85 rounded-t-sm" style="height: 85%;" title="Sep: Rp41.100"></div>
+<span class="text-[10px] text-text-secondary mt-1">Sep</span>
+</div>
+<!-- Oct: Rp43.24k (Highest, Full Bright Emerald) -->
+<div class="flex flex-col items-center flex-1">
+<div class="w-full bg-interest rounded-t-sm ring-1 ring-interest/40" style="height: 100%;" title="Okt: Rp43.240"></div>
+<span class="text-[10px] font-bold text-text-primary mt-1">Okt</span>
+</div>
+</div>
+<p class="text-[11px] text-text-secondary tabular-nums">
+            Rata-rata akrual harian: <span class="font-semibold text-text-primary">≈ +Rp1.880/hari</span>
+</p>
+</div>
+</section>
+</div>
+<!-- 11. Bottom Navigation Bar (Laporan Active Slot) -->
+<nav aria-label="Navigasi Utama" class="fixed bottom-0 left-0 w-full z-50 bg-surface/95 backdrop-blur-md border-t border-outline flex justify-around items-center px-1 pb-safe pt-2 shadow-sm">
+<!-- 1. Beranda -->
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-text-primary active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-[24px]">home</span>
+<span class="text-label-caps mt-0.5 font-medium">Beranda</span>
+</button>
+<!-- 2. Transaksi -->
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-text-primary active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-[24px]">receipt_long</span>
+<span class="text-label-caps mt-0.5 font-medium">Transaksi</span>
+</button>
+<!-- 3. Tambah (Center Quick Add) -->
+<div class="flex flex-col items-center justify-center flex-1">
+<button aria-label="Tambah Transaksi Baru" class="w-11 h-11 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-[0_8px_24px_rgba(15,23,42,0.18)] active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-[24px]">add</span>
+</button>
+</div>
+<!-- 4. Rekening -->
+<button class="flex flex-col items-center justify-center text-text-secondary hover:text-text-primary active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-[24px]">account_balance_wallet</span>
+<span class="text-label-caps mt-0.5 font-medium">Rekening</span>
+</button>
+<!-- 5. Laporan (Active Tab) -->
+<button class="flex flex-col items-center justify-center text-primary font-bold active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-[24px]" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+<span class="text-label-caps mt-0.5 font-bold">Laporan</span>
+</button>
+</nav>
+</main>
+</body>
+</html>

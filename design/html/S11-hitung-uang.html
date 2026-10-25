@@ -1,0 +1,409 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, viewport-fit=cover" name="viewport"/>
+<title>Kantong - Hitung Uang Tunai NT$</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "transfer": "#475569",
+            "tertiary-fixed": "#f9debf",
+            "on-primary": "#ffffff",
+            "primary-fixed-dim": "#c0c6db",
+            "currency-idr": "#0369A1",
+            "surface-container-highest": "#e5e2e3",
+            "primary-fixed": "#dce2f7",
+            "on-accent": "#FFFFFF",
+            "surface-muted": "#EEF0F4",
+            "expense": "#B91C1C",
+            "outline-variant": "#c6c6cd",
+            "on-error-container": "#93000a",
+            "currency-ntd": "#7C3AED",
+            "secondary-fixed-dim": "#b9c7df",
+            "on-secondary-container": "#57657a",
+            "surface-container": "#f0edee",
+            "on-secondary-fixed-variant": "#3a485b",
+            "on-secondary-fixed": "#0d1c2e",
+            "interest": "#047857",
+            "text-disabled": "#94A3B8",
+            "primary": "#0F172A",
+            "on-tertiary-container": "#968065",
+            "tertiary": "#000000",
+            "surface": "#FFFFFF",
+            "secondary-container": "#d5e3fc",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "expense-container": "#FEE2E2",
+            "income": "#15803D",
+            "surface-container-low": "#f6f3f4",
+            "secondary-fixed": "#d5e3fc",
+            "secondary": "#515f74",
+            "surface-variant": "#e5e2e3",
+            "on-tertiary-fixed": "#261906",
+            "tertiary-container": "#261906",
+            "on-secondary": "#ffffff",
+            "surface-dim": "#dcd9db",
+            "on-background": "#1b1b1d",
+            "currency-idr-container": "#E0F2FE",
+            "interest-container": "#D1FAE5",
+            "text-primary": "#0F172A",
+            "primary-container": "#141b2b",
+            "error-container": "#ffdad6",
+            "outline": "#E3E6EC",
+            "warning": "#B45309",
+            "on-surface-variant": "#45464c",
+            "inverse-surface": "#303031",
+            "background": "#F4F5F9",
+            "warning-container": "#FEF3C7",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#55442d",
+            "inverse-primary": "#c0c6db",
+            "surface-tint": "#575e70",
+            "on-primary-container": "#7d8497",
+            "on-primary-fixed": "#141b2b",
+            "surface-bright": "#fcf8fa",
+            "surface-container-high": "#eae7e9",
+            "surface-container-lowest": "#ffffff",
+            "on-primary-fixed-variant": "#404758",
+            "currency-ntd-container": "#EDE9FE",
+            "on-surface": "#1b1b1d",
+            "currency-ntd-text": "#6D28D9",
+            "inverse-on-surface": "#f3f0f1",
+            "text-secondary": "#475569",
+            "error": "#ba1a1a",
+            "on-error": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "8px",
+            "space-2xl": "32px",
+            "margin": "16px",
+            "space-lg": "16px",
+            "space-xs": "4px",
+            "space-xl": "24px",
+            "space-md": "12px",
+            "gutter": "16px"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "label-caps": ["Plus Jakarta Sans", "sans-serif"],
+            "body-md": ["Plus Jakarta Sans", "sans-serif"],
+            "body-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "title-md": ["Plus Jakarta Sans", "sans-serif"],
+            "label-md": ["Plus Jakarta Sans", "sans-serif"],
+            "display-amount": ["Plus Jakarta Sans", "sans-serif"],
+            "body-lg": ["Plus Jakarta Sans", "sans-serif"],
+            "amount-sm": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans", "sans-serif"],
+            "amount-md": ["Plus Jakarta Sans", "sans-serif"],
+            "amount-lg": ["Plus Jakarta Sans", "sans-serif"]
+          },
+          "fontSize": {
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .sheet-shadow {
+      box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.12);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background min-h-screen flex items-center justify-center p-0 font-body-md antialiased text-text-primary selection:bg-currency-ntd-container selection:text-currency-ntd">
+<!-- Mobile Canvas Frame (390 x 844 Native iOS) -->
+<main class="relative w-[390px] h-[844px] bg-background overflow-hidden shadow-2xl flex flex-col justify-end">
+<!-- BACKGROUND UNDERLAY: Screen 'Dompet NT$' with subtle dimming -->
+<div aria-hidden="true" class="absolute inset-0 z-0 flex flex-col bg-background select-none pointer-events-none">
+<!-- iOS Status Bar (Simulated) -->
+<div class="w-full h-11 px-6 pt-3 flex justify-between items-center text-text-primary text-xs font-semibold">
+<span>09:41</span>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</div>
+<!-- Header of Screen in Background -->
+<header class="px-margin pt-2 pb-4 flex items-center justify-between">
+<div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center border border-outline">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">arrow_back</span>
+</div>
+<h1 class="font-headline-md text-headline-md text-text-primary">Dompet NT$</h1>
+<div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center border border-outline">
+<span class="material-symbols-outlined text-text-secondary text-[20px]">more_horiz</span>
+</div>
+</header>
+<!-- Account Summary Card in Background -->
+<section class="px-margin">
+<div class="bg-surface rounded-xl p-5 border border-outline">
+<div class="flex items-center justify-between mb-2">
+<span class="px-2.5 py-0.5 rounded-full bg-currency-ntd-container text-currency-ntd font-label-caps text-label-caps font-bold">TUNAI NTD</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Rekening Utama</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary">Saldo Terakhir</p>
+<div class="flex items-baseline space-x-1 mt-1">
+<span class="font-display-amount text-display-amount text-text-primary tabular-nums">NT$3.600</span>
+</div>
+</div>
+</section>
+<!-- Backdrop Overlay Mask (~40% black tone) -->
+<div class="absolute inset-0 bg-slate-900/40 backdrop-blur-[1px]"></div>
+</div>
+<!-- TALL BOTTOM SHEET OVERLAY (85% Height) -->
+<section aria-labelledby="modal-title" aria-modal="true" class="relative z-10 w-full h-[85%] bg-surface rounded-t-[24px] sheet-shadow flex flex-col overflow-hidden animate-in slide-in-from-bottom duration-300" role="dialog">
+<!-- Top iOS Grab Handle -->
+<div class="pt-3 pb-2 flex-shrink-0 flex justify-center items-center">
+<div aria-hidden="true" class="w-10 h-1.5 bg-slate-300 rounded-full"></div>
+</div>
+<!-- Bottom Sheet Header with Close Button -->
+<header class="px-margin pb-3 flex items-start justify-between border-b border-outline flex-shrink-0">
+<div>
+<h2 class="font-headline-md text-headline-md text-text-primary" id="modal-title">Hitung Uang</h2>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5">Dompet NT$ · hitung uang tunai di dompetmu</p>
+</div>
+<button aria-label="Tutup" class="w-8 h-8 rounded-full bg-surface-muted text-text-secondary flex items-center justify-center hover:bg-slate-200 active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</header>
+<!-- Scrollable Denomination Area -->
+<div class="flex-1 overflow-y-auto px-margin py-3 space-y-4">
+<!-- SECTION 1: UANG KERTAS -->
+<div>
+<div class="flex items-center justify-between mb-2 px-1">
+<span class="font-label-caps text-label-caps text-text-secondary font-semibold">UANG KERTAS</span>
+<span class="font-label-caps text-label-caps text-currency-ntd font-bold">SUBTOTAL</span>
+</div>
+<div class="bg-surface rounded-xl border border-outline divide-y divide-outline overflow-hidden">
+<!-- Row 1: NT$1.000 -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-primary">NT$1.000</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md font-bold text-text-primary tabular-nums">2</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md font-bold text-text-primary tabular-nums">NT$2.000</span>
+</div>
+</div>
+<!-- Row 2: NT$500 -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-primary">NT$500</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md font-bold text-text-primary tabular-nums">2</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md font-bold text-text-primary tabular-nums">NT$1.000</span>
+</div>
+</div>
+<!-- Row 3: NT$200 (Dimmed / 0) -->
+<div class="p-3 flex items-center justify-between bg-surface-container-low/40">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-disabled">NT$200</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline opacity-80">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-disabled cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md text-text-disabled tabular-nums font-semibold">0</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md text-text-disabled tabular-nums">NT$0</span>
+</div>
+</div>
+<!-- Row 4: NT$100 -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-primary">NT$100</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md font-bold text-text-primary tabular-nums">5</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md font-bold text-text-primary tabular-nums">NT$500</span>
+</div>
+</div>
+</div>
+</div>
+<!-- SECTION 2: KOIN -->
+<div>
+<div class="flex items-center justify-between mb-2 px-1">
+<span class="font-label-caps text-label-caps text-text-secondary font-semibold">KOIN</span>
+<span class="font-label-caps text-label-caps text-currency-ntd font-bold">SUBTOTAL</span>
+</div>
+<div class="bg-surface rounded-xl border border-outline divide-y divide-outline overflow-hidden">
+<!-- Coin Row 1: NT$50 -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-primary">NT$50</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md font-bold text-text-primary tabular-nums">1</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md font-bold text-text-primary tabular-nums">NT$50</span>
+</div>
+</div>
+<!-- Coin Row 2: NT$10 -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-primary">NT$10</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md font-bold text-text-primary tabular-nums">3</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md font-bold text-text-primary tabular-nums">NT$30</span>
+</div>
+</div>
+<!-- Coin Row 3: NT$5 -->
+<div class="p-3 flex items-center justify-between hover:bg-surface-bright transition-colors">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-primary">NT$5</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md font-bold text-text-primary tabular-nums">1</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md font-bold text-text-primary tabular-nums">NT$5</span>
+</div>
+</div>
+<!-- Coin Row 4: NT$1 (Dimmed / 0) -->
+<div class="p-3 flex items-center justify-between bg-surface-container-low/40">
+<div class="w-20">
+<span class="font-title-md text-title-md font-semibold text-text-disabled">NT$1</span>
+</div>
+<div class="inline-flex items-center bg-surface-muted rounded-full p-1 border border-outline opacity-80">
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-disabled cursor-not-allowed" disabled="" type="button">
+<span class="material-symbols-outlined text-[16px]">remove</span>
+</button>
+<span class="w-9 text-center font-amount-md text-amount-md text-text-disabled tabular-nums font-semibold">0</span>
+<button class="w-7 h-7 rounded-full bg-surface flex items-center justify-center text-text-primary shadow-xs active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[16px]">add</span>
+</button>
+</div>
+<div class="w-24 text-right">
+<span class="font-amount-md text-amount-md text-text-disabled tabular-nums">NT$0</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- STICKY BOTTOM FOOTER & SUMMARY CARD -->
+<footer class="border-t border-outline bg-surface p-margin flex-shrink-0 flex flex-col space-y-3.5 shadow-lg">
+<!-- Summary Comparison Breakdown -->
+<div class="bg-surface-muted/80 rounded-xl p-3 border border-outline space-y-2">
+<!-- Total Counted -->
+<div class="flex items-center justify-between">
+<span class="font-body-sm text-body-sm text-text-secondary">Total dihitung</span>
+<span class="font-amount-lg text-amount-lg font-bold text-text-primary tabular-nums">NT$3.585</span>
+</div>
+<div class="h-[1px] bg-outline w-full"></div>
+<!-- Balance in Kantong & Diff -->
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-1.5">
+<span class="font-body-sm text-body-sm text-text-secondary">Saldo di Kantong</span>
+<span class="font-body-sm text-body-sm font-semibold text-text-primary tabular-nums">NT$3.600</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="font-body-sm text-body-sm text-text-secondary">Selisih:</span>
+<div class="inline-flex items-center px-1.5 py-0.5 rounded bg-expense-container text-expense font-amount-sm text-amount-sm font-bold tabular-nums">
+                −NT$15
+              </div>
+</div>
+</div>
+</div>
+<!-- Primary CTA Button -->
+<button class="w-full h-[52px] bg-primary text-on-primary rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center space-x-2 active:opacity-90 transition-opacity" type="button">
+<span>Simpan sebagai Penyesuaian</span>
+<span class="material-symbols-outlined text-[20px]">check</span>
+</button>
+<!-- iOS Home Indicator -->
+<div class="w-full pt-1 pb-1 flex justify-center">
+<div class="w-32 h-1 bg-text-primary/20 rounded-full"></div>
+</div>
+</footer>
+</section>
+</main>
+</body></html>

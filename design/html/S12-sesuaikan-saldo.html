@@ -1,0 +1,366 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Kantong - Sesuaikan Saldo SeaBank</title>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "transfer": "#475569",
+            "on-secondary-fixed": "#0d1c2e",
+            "surface-variant": "#e5e2e3",
+            "on-secondary": "#ffffff",
+            "on-accent": "#FFFFFF",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "on-primary": "#FFFFFF",
+            "interest-container": "#D1FAE5",
+            "inverse-primary": "#c0c6db",
+            "surface-container-low": "#f6f3f4",
+            "primary-container": "#141b2b",
+            "currency-idr": "#0369A1",
+            "on-surface": "#1b1b1d",
+            "expense-container": "#FEE2E2",
+            "secondary-container": "#d5e3fc",
+            "warning-container": "#FEF3C7",
+            "currency-ntd-text": "#6D28D9",
+            "secondary-fixed": "#d5e3fc",
+            "income": "#15803D",
+            "warning": "#B45309",
+            "tertiary-fixed": "#f9debf",
+            "on-secondary-container": "#57657a",
+            "on-error": "#ffffff",
+            "surface-dim": "#dcd9db",
+            "on-primary-fixed": "#141b2b",
+            "surface-container-high": "#eae7e9",
+            "tertiary": "#000000",
+            "surface-muted": "#EEF0F4",
+            "secondary": "#515f74",
+            "text-primary": "#0F172A",
+            "surface-bright": "#fcf8fa",
+            "interest": "#047857",
+            "on-tertiary-container": "#968065",
+            "surface-tint": "#575e70",
+            "on-error-container": "#93000a",
+            "on-secondary-fixed-variant": "#3a485b",
+            "text-secondary": "#475569",
+            "primary": "#000000",
+            "on-background": "#1b1b1d",
+            "on-primary-container": "#7d8497",
+            "surface-container-lowest": "#ffffff",
+            "outline": "#E3E6EC",
+            "inverse-surface": "#303031",
+            "expense": "#B91C1C",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#45464c",
+            "error": "#ba1a1a",
+            "text-disabled": "#94A3B8",
+            "currency-ntd-container": "#EDE9FE",
+            "surface-container": "#f0edee",
+            "surface": "#FFFFFF",
+            "on-tertiary-fixed": "#261906",
+            "on-primary-fixed-variant": "#404758",
+            "secondary-fixed-dim": "#b9c7df",
+            "outline-variant": "#c6c6cd",
+            "primary-fixed": "#dce2f7",
+            "on-tertiary": "#ffffff",
+            "currency-ntd": "#7C3AED",
+            "tertiary-container": "#261906",
+            "currency-idr-container": "#E0F2FE",
+            "surface-container-highest": "#e5e2e3",
+            "inverse-on-surface": "#f3f0f1",
+            "primary-fixed-dim": "#c0c6db",
+            "on-tertiary-fixed-variant": "#55442d",
+            "background": "#F4F5F9"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "4px",
+            "space-2xl": "32px",
+            "space-xl": "24px",
+            "space-md": "12px",
+            "space-lg": "16px",
+            "margin": "16px",
+            "gutter": "16px",
+            "space-sm": "8px"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "display-amount": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .tnum {
+      font-variant-numeric: tabular-nums;
+    }
+    @keyframes cursor-blink {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0; }
+    }
+    .animate-caret {
+      animation: cursor-blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .bottom-sheet-shadow {
+      box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.16);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background min-h-screen antialiased select-none flex justify-center">
+<!-- iPhone Canvas Shell (390 x 844) -->
+<div class="relative w-[390px] min-h-[844px] bg-background overflow-hidden flex flex-col">
+<!-- iPhone Top Island / Status Bar -->
+<div class="h-11 w-full flex items-center justify-between px-7 shrink-0 z-30 select-none">
+<span class="font-label-caps text-label-caps text-text-primary font-bold">09:41</span>
+<div class="flex items-center space-x-1.5 text-text-primary">
+<span class="material-symbols-outlined text-[16px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px]">wifi</span>
+<span class="material-symbols-outlined text-[18px]">battery_full</span>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- UNDERLAY: SEABANK ACCOUNT DETAIL (Dimmed & Blurred) -->
+<!-- ============================================== -->
+<div class="flex-1 flex flex-col overflow-hidden relative">
+<!-- Account Header Top Bar -->
+<header class="flex items-center justify-between px-margin pt-space-xs pb-space-sm bg-background">
+<div class="flex items-center space-x-2">
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-text-primary hover:bg-surface-muted transition-colors">
+<span class="material-symbols-outlined text-[22px]">arrow_back_ios_new</span>
+</button>
+<span class="font-headline-md text-headline-md text-text-primary">SeaBank</span>
+</div>
+<div class="flex items-center space-x-1">
+<button class="w-9 h-9 rounded-full flex items-center justify-center text-text-secondary hover:bg-surface-muted">
+<span class="material-symbols-outlined text-[20px]">more_vert</span>
+</button>
+</div>
+</header>
+<!-- Account Detail Scroll Content -->
+<div class="flex-1 overflow-y-auto px-margin space-y-space-lg pb-24">
+<!-- Balance Hero Card -->
+<div class="bg-surface rounded-xl p-5 border border-outline shadow-sm space-y-3">
+<div class="flex items-center justify-between">
+<span class="px-2 py-0.5 rounded font-label-caps text-label-caps bg-currency-idr-container text-currency-idr font-semibold">IDR</span>
+</div>
+<div>
+<span class="font-body-sm text-body-sm text-text-secondary block">Saldo Aktif</span>
+<div class="font-display-amount text-display-amount text-text-primary tracking-tight tnum mt-0.5">
+              Rp14.600.000
+            </div>
+</div>
+<!-- Daily Interest Pill -->
+<div class="inline-flex items-center space-x-1.5 px-2.5 py-1 rounded-full bg-interest-container text-interest">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">trending_up</span>
+<span class="font-label-caps text-label-caps font-semibold">4% p.a. · +Rp1.280/hari</span>
+</div>
+<!-- Allocation row -->
+<div class="pt-2 border-t border-outline flex items-center justify-between text-text-secondary"><span class="font-body-sm text-body-sm">Dana Darurat · 73%</span></div>
+</div>
+<!-- Quick Action Grid -->
+<div class="grid grid-cols-3 gap-2">
+<button class="bg-surface p-3 rounded-xl border border-outline flex flex-col items-center justify-center space-y-1">
+<div class="w-10 h-10 rounded-full bg-surface-muted flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[20px]">sync_alt</span>
+</div>
+<span class="font-label-caps text-label-caps text-text-primary">Transfer</span>
+</button>
+<button class="bg-surface p-3 rounded-xl border border-outline flex flex-col items-center justify-center space-y-1">
+<div class="w-10 h-10 rounded-full bg-surface-muted flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<span class="font-label-caps text-label-caps text-text-primary font-bold">Sesuaikan</span>
+</button>
+<button class="bg-surface p-3 rounded-xl border border-outline flex flex-col items-center justify-center space-y-1">
+<div class="w-10 h-10 rounded-full bg-surface-muted flex items-center justify-center text-text-primary">
+<span class="material-symbols-outlined text-[20px]">history</span>
+</div>
+<span class="font-label-caps text-label-caps text-text-primary">Riwayat</span>
+</button>
+</div>
+<!-- Recent Transactions -->
+<div class="space-y-2">
+<span class="font-title-md text-title-md text-text-primary">Aktivitas Terakhir</span>
+<div class="bg-surface rounded-xl border border-outline divide-y divide-outline overflow-hidden">
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-full bg-interest-container flex items-center justify-center text-interest">
+<span class="material-symbols-outlined text-[18px]">percent</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-text-primary block">Bunga Harian</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Hari ini, 06:00</span>
+</div>
+</div>
+<span class="font-amount-md text-amount-md text-income tnum">+Rp1.280</span>
+</div>
+<div class="p-3.5 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-full bg-expense-container flex items-center justify-center text-expense">
+<span class="material-symbols-outlined text-[18px]">shopping_bag</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-text-primary block">Supermarket Alfamart</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Kemarin, 19:42</span>
+</div>
+</div>
+<span class="font-amount-md text-amount-md text-text-primary tnum">-Rp142.500</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Dimmed & Frosted Overlay over Background (45% Dimmed) -->
+<div class="absolute inset-0 bg-black/45 backdrop-blur-[2px] z-40 transition-opacity duration-300"></div>
+<!-- ============================================== -->
+<!-- MODAL BOTTOM SHEET: "Sesuaikan Saldo"           -->
+<!-- ============================================== -->
+<section aria-labelledby="sheet-title" aria-modal="true" class="absolute bottom-0 left-0 right-0 z-50 bg-surface rounded-t-[24px] bottom-sheet-shadow border-t border-outline flex flex-col max-h-[90%] transform transition-transform duration-300" role="dialog">
+<!-- Centered Grab Handle Pill -->
+<div class="w-full flex justify-center pt-3 pb-2 cursor-grab active:cursor-grabbing">
+<div class="w-9 h-1 rounded-full bg-[#CBD5E1]"></div>
+</div>
+<!-- Sheet Header Bar -->
+<div class="px-5 pb-3 pt-1 flex items-start justify-between border-b border-outline/60">
+<div class="space-y-0.5">
+<h2 class="font-headline-md text-headline-md text-text-primary" id="sheet-title">
+              Sesuaikan Saldo
+            </h2>
+<p class="font-body-sm text-body-sm text-text-secondary">
+              SeaBank · cocokkan dengan saldo di aplikasi bank
+            </p>
+</div>
+<button aria-label="Tutup" class="w-8 h-8 rounded-full bg-surface-muted text-text-secondary hover:text-text-primary flex items-center justify-center transition-colors -mr-1" type="button">
+<span class="material-symbols-outlined text-[18px]">close</span>
+</button>
+</div>
+<!-- Sheet Scrollable Form Content -->
+<div class="px-5 py-4 space-y-4 overflow-y-auto">
+<!-- Element 1: Current Balance in App "Saldo di Kantong" -->
+<div class="bg-surface-muted rounded-xl p-4 flex items-center justify-between border border-outline/70">
+<div class="flex items-center space-x-2">
+<span class="material-symbols-outlined text-[20px] text-text-secondary">account_balance_wallet</span>
+<span class="font-body-md text-body-md text-text-secondary">Saldo di Kantong</span>
+</div>
+<span class="font-amount-md text-amount-md text-text-secondary tnum tracking-tight font-semibold">
+              Rp14.600.000
+            </span>
+</div>
+<!-- Element 2: Large Input Field (Focused state with active ink border) -->
+<div class="space-y-1.5">
+<label class="font-label-md text-label-md text-text-primary block font-semibold" for="bank-balance-input">
+              Saldo asli di bank
+            </label>
+<div class="relative bg-surface rounded-xl border-2 border-primary px-4 py-3 min-h-[58px] flex items-center shadow-sm">
+<div class="flex items-center w-full justify-between">
+<div class="flex items-center">
+<span class="font-amount-lg text-amount-lg text-text-primary tnum font-bold tracking-tight">
+                    Rp14.600.380
+                  </span>
+<!-- Animated blinking cursor bar -->
+<span class="inline-block w-[2px] h-6 bg-primary ml-1 rounded-full animate-caret"></span>
+</div>
+<button class="w-6 h-6 rounded-full bg-surface-muted text-text-disabled hover:text-text-primary flex items-center justify-center transition-colors" type="button">
+<span class="material-symbols-outlined text-[16px]">backspace</span>
+</button>
+</div>
+</div>
+<!-- Helper Note -->
+<p class="font-body-sm text-body-sm text-text-secondary pt-0.5">
+              Masukkan saldo terkini yang terlihat di aplikasi SeaBank
+            </p>
+</div>
+<!-- Element 3: Result Calculation & Audit Trail Card -->
+<div class="bg-surface-muted rounded-xl p-4 border border-outline space-y-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-2">
+<span class="inline-flex items-center px-2.5 py-1 rounded-full text-[12px] font-semibold bg-slate-200 text-slate-800 tnum">
+                  Selisih +Rp380
+                </span>
+</div>
+<span class="font-label-caps text-label-caps text-transfer font-bold tracking-wider">
+                AUDIT LOG
+              </span>
+</div>
+<div class="flex items-start space-x-2 pt-1">
+<span class="material-symbols-outlined text-[17px] text-text-secondary mt-0.5 shrink-0">info</span>
+<p class="font-body-sm text-body-sm text-text-secondary leading-relaxed">
+                akan dicatat sebagai <span class="font-semibold text-text-primary">Penyesuaian</span> (tidak masuk laporan pemasukan)
+              </p>
+</div>
+</div>
+<!-- Element 4: Action Buttons -->
+<div class="space-y-2 pt-1">
+<button class="w-full h-[52px] bg-[#111827] text-white rounded-xl font-label-lg text-label-lg font-semibold flex items-center justify-center space-x-2 shadow-sm active:scale-[0.99] transition-transform duration-150" type="button">
+<span class="material-symbols-outlined text-[20px]">check_circle</span>
+<span>Simpan Penyesuaian</span>
+</button>
+<button class="w-full py-3 text-center font-label-md text-label-md text-text-secondary hover:text-text-primary active:opacity-70 transition-colors" type="button">
+              Batal
+            </button>
+</div>
+</div>
+<!-- iPhone Home Indicator Spacer & Bar -->
+<div class="w-full pt-1 pb-2 flex justify-center items-center">
+<div class="w-32 h-1 bg-slate-300 rounded-full"></div>
+</div>
+</section>
+</div>
+</div>
+</body></html>

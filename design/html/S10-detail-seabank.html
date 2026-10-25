@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Detail Rekening SeaBank - Kantong</title>
+<!-- Plus Jakarta Sans Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS with CDN Plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "tertiary-container": "#261906",
+            "background": "#F4F5F9",
+            "surface": "#FFFFFF",
+            "currency-ntd": "#7C3AED",
+            "on-surface-variant": "#45464c",
+            "secondary-fixed-dim": "#b9c7df",
+            "primary-container": "#141b2b",
+            "error-container": "#ffdad6",
+            "on-tertiary": "#ffffff",
+            "on-tertiary-fixed-variant": "#55442d",
+            "on-error": "#ffffff",
+            "currency-idr-container": "#E0F2FE",
+            "secondary-container": "#d5e3fc",
+            "on-error-container": "#93000a",
+            "text-disabled": "#94A3B8",
+            "interest": "#047857",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "outline": "#E3E6EC",
+            "inverse-primary": "#c0c6db",
+            "error": "#ba1a1a",
+            "secondary": "#515f74",
+            "secondary-fixed": "#d5e3fc",
+            "primary-fixed-dim": "#c0c6db",
+            "tertiary-fixed": "#f9debf",
+            "transfer": "#475569",
+            "on-secondary-container": "#57657a",
+            "on-secondary": "#ffffff",
+            "outline-variant": "#c6c6cd",
+            "income": "#15803D",
+            "surface-muted": "#EEF0F4",
+            "on-primary-fixed-variant": "#404758",
+            "currency-idr": "#0369A1",
+            "expense-container": "#FEE2E2",
+            "surface-container-highest": "#e5e2e3",
+            "on-primary-fixed": "#141b2b",
+            "on-primary": "#ffffff",
+            "primary-fixed": "#dce2f7",
+            "expense": "#B91C1C",
+            "text-secondary": "#475569",
+            "surface-container": "#f0edee",
+            "inverse-surface": "#303031",
+            "surface-container-low": "#f6f3f4",
+            "text-primary": "#0F172A",
+            "inverse-on-surface": "#f3f0f1",
+            "currency-ntd-text": "#6D28D9",
+            "surface-bright": "#fcf8fa",
+            "on-tertiary-fixed": "#261906",
+            "surface-container-high": "#eae7e9",
+            "currency-ntd-container": "#EDE9FE",
+            "surface-variant": "#e5e2e3",
+            "surface-container-lowest": "#ffffff",
+            "surface-tint": "#575e70",
+            "interest-container": "#D1FAE5",
+            "on-accent": "#FFFFFF",
+            "primary": "#000000",
+            "on-tertiary-container": "#968065",
+            "on-secondary-fixed": "#0d1c2e",
+            "on-surface": "#1b1b1d",
+            "tertiary": "#000000",
+            "on-primary-container": "#7d8497",
+            "on-background": "#1b1b1d",
+            "surface-dim": "#dcd9db",
+            "on-secondary-fixed-variant": "#3a485b",
+            "warning": "#B45309",
+            "warning-container": "#FEF3C7"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-sm": "8px",
+            "gutter": "16px",
+            "space-md": "12px",
+            "space-xs": "4px",
+            "space-xl": "24px",
+            "space-2xl": "32px",
+            "margin": "16px",
+            "space-lg": "16px"
+          },
+          "fontFamily": {
+            "display-amount": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      -webkit-font-smoothing: antialiased;
+      -moz-osx-font-smoothing: grayscale;
+      font-feature-settings: "tnum" 1, "cv01" 1;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+      line-height: 1;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .fill-icon {
+      font-variation-settings: 'FILL' 1, 'wght' 500, 'GRAD' 0, 'opsz' 24;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background text-text-primary min-h-screen flex justify-center selection:bg-currency-idr-container selection:text-currency-idr">
+<!-- Mobile Viewport Container (Simulating iPhone PWA canvas) -->
+<main class="w-full max-w-md bg-background min-h-screen flex flex-col relative pb-10">
+<!-- 1. iOS Status Bar with Dynamic Island -->
+<header class="sticky top-0 z-40 bg-background/90 backdrop-blur-md px-margin pt-3 pb-2 flex items-center justify-between">
+<!-- Time -->
+<span class="font-label-md text-label-md text-text-primary tracking-tight font-semibold pl-2">9:41</span>
+<!-- Dynamic Island Simulation -->
+<div class="h-[26px] w-[116px] bg-black rounded-full mx-auto flex items-center justify-between px-2.5">
+<div class="w-2.5 h-2.5 rounded-full bg-neutral-900 border border-neutral-800"></div>
+<div class="w-2.5 h-2.5 rounded-full bg-[#051d10] flex items-center justify-center">
+<div class="w-1.5 h-1.5 rounded-full bg-emerald-500"></div>
+</div>
+</div>
+<!-- iOS Icons (Signal, Wifi, Battery) -->
+<div class="flex items-center gap-1.5 text-text-primary pr-2">
+<span class="material-symbols-outlined text-[15px]">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[15px]">wifi</span>
+<span class="material-symbols-outlined text-[20px] fill-icon">battery_full</span>
+</div>
+</header>
+<!-- 2. iOS Standard Sub-page Navigation Bar -->
+<nav class="flex items-center justify-between px-margin py-space-sm bg-background">
+<!-- Back Button -->
+<a class="flex items-center -ml-1 text-currency-idr font-body-md text-body-md font-medium active:opacity-60 transition-opacity" href="javascript:void(0)">
+<span class="material-symbols-outlined text-[24px]">chevron_left</span>
+<span class="text-[17px] -ml-0.5">Rekening</span>
+</a>
+<!-- Title -->
+<h1 class="font-title-md text-title-md text-text-primary font-semibold tracking-tight text-center">
+        SeaBank
+      </h1>
+<!-- Action Button -->
+<button class="text-currency-idr font-body-md text-body-md font-medium active:opacity-60 transition-opacity pr-1 text-[17px]" type="button">
+        Edit
+      </button>
+</nav>
+<!-- Scrollable Content Stack -->
+<div class="px-margin flex flex-col gap-space-lg pt-space-xs">
+<!-- 3. Hero Card / Saldo Section -->
+<section class="bg-surface rounded-xl p-5 border border-outline shadow-sm flex flex-col">
+<!-- Top Row: Bank Icon Tile & Currency Badge -->
+<div class="flex items-center justify-between mb-4">
+<div class="w-12 h-12 rounded-xl bg-currency-idr-container text-currency-idr flex items-center justify-center shadow-xs">
+<span class="material-symbols-outlined text-[28px] fill-icon">account_balance</span>
+</div>
+<span class="px-2.5 py-1 rounded-full bg-currency-idr-container text-currency-idr font-label-caps text-label-caps uppercase tracking-wider font-bold">
+            IDR
+          </span>
+</div>
+<!-- Balance Details -->
+<span class="font-label-md text-label-md text-text-secondary mb-1">Saldo</span>
+<div class="font-display-amount text-display-amount text-text-primary tracking-tight font-bold mb-1.5">
+          Rp14.600.000
+        </div>
+<div class="flex items-center gap-1.5 text-text-secondary font-body-sm text-body-sm mb-5">
+<span class="material-symbols-outlined text-[16px] text-text-disabled">check_circle</span>
+<span>Terakhir dicocokkan: 3 hari lalu</span>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-2 gap-space-md pt-1">
+<button class="h-[44px] bg-surface-muted hover:bg-outline active:scale-[0.98] transition-all rounded-lg flex items-center justify-center gap-2 px-3 text-text-primary font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">tune</span>
+<span>Sesuaikan Saldo</span>
+</button>
+<button class="h-[44px] bg-surface-muted hover:bg-outline active:scale-[0.98] transition-all rounded-lg flex items-center justify-center gap-2 px-3 text-text-primary font-label-md text-label-md" type="button">
+<span class="material-symbols-outlined text-[18px] text-text-secondary">swap_horiz</span>
+<span>Transfer</span>
+</button>
+</div>
+</section>
+<!-- 4. Card Bunga (Daily Savings Interest) -->
+<section class="bg-surface rounded-xl p-5 border border-outline shadow-sm flex flex-col gap-4">
+<!-- Header -->
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2">
+<div class="w-7 h-7 rounded-lg bg-interest-container flex items-center justify-center text-interest">
+<span class="material-symbols-outlined text-[18px] fill-icon">percent</span>
+</div>
+<h2 class="font-title-md text-title-md text-text-primary font-semibold">Bunga Tabungan</h2>
+</div>
+<span class="bg-interest-container text-interest font-label-caps text-label-caps px-2 py-0.5 rounded-full font-bold">
+            4% p.a.
+          </span>
+</div>
+<!-- Interest Policy Detail Rows -->
+<div class="bg-surface-muted/60 rounded-lg p-3 text-body-sm text-body-sm flex flex-col gap-2 border border-outline/50">
+<div class="flex justify-between items-center">
+<span class="text-text-secondary">Suku bunga</span>
+<span class="font-label-md text-label-md text-text-primary">4% p.a. · Harian</span>
+</div>
+<div class="h-[1px] bg-outline/60 w-full"></div>
+<div class="flex justify-between items-center">
+<span class="text-text-secondary">Pajak bunga</span>
+<span class="font-label-md text-label-md text-text-secondary">20% (saldo &gt; Rp7.500.000)</span>
+</div>
+</div>
+<!-- 3 Stat Tiles / Grid Mini Kartu -->
+<div class="grid grid-cols-3 gap-2">
+<!-- Kemarin -->
+<div class="bg-interest-container/35 border border-interest/20 rounded-xl p-3 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-text-secondary uppercase">Kemarin</span>
+<span class="font-amount-md text-amount-md text-interest font-bold tracking-tight mt-1">
+              +Rp1.280
+            </span>
+</div>
+<!-- Bulan ini -->
+<div class="bg-interest-container/35 border border-interest/20 rounded-xl p-3 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-text-secondary uppercase">Bulan ini</span>
+<span class="font-amount-md text-amount-md text-interest font-bold tracking-tight mt-1">
+              +Rp29.440
+            </span>
+</div>
+<!-- Estimasi/tahun -->
+<div class="bg-surface-muted border border-outline rounded-xl p-3 flex flex-col justify-between">
+<span class="font-label-caps text-label-caps text-text-secondary uppercase">Est. / tahun</span>
+<span class="font-amount-md text-amount-md text-text-primary font-bold tracking-tight mt-1">
+              ≈ Rp467.200
+            </span>
+</div>
+</div>
+<!-- Footnote -->
+<p class="font-body-sm text-[11px] leading-tight text-text-secondary flex items-start gap-1">
+<span class="material-symbols-outlined text-[13px] text-text-disabled mt-0.5">info</span>
+<span>Estimasi. Cocokkan berkala dengan saldo riil pada aplikasi bank SeaBank Anda.</span>
+</p>
+</section>
+<!-- 5. Small Card "Target" -->
+<section class="bg-surface rounded-xl p-4 border border-outline shadow-sm flex flex-col gap-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-2.5">
+<span class="text-xl leading-none">🛟</span>
+<div>
+<h3 class="font-title-md text-title-md text-text-primary font-semibold leading-tight">Dana Darurat</h3>
+<span class="font-body-sm text-body-sm text-text-secondary">Ikuti saldo SeaBank</span>
+</div>
+</div>
+<div class="flex items-center gap-1 text-currency-idr font-label-md text-label-md">
+<span>73%</span>
+<span class="material-symbols-outlined text-[18px] text-text-disabled">chevron_right</span>
+</div>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-surface-muted h-2 rounded-full overflow-hidden">
+<div class="bg-currency-idr h-full rounded-full transition-all duration-500" style="width: 73%"></div>
+</div>
+<!-- Progress Caption -->
+<div class="flex justify-between items-center font-body-sm text-[12px] text-text-secondary pt-0.5">
+<span class="font-medium text-text-primary">Rp14.600.000</span>
+<span>Target: Rp20.000.000</span>
+</div>
+</section>
+<!-- 6. Section "Riwayat Transaksi Rekening" -->
+<section class="flex flex-col gap-2.5 mb-6">
+<div class="flex items-center justify-between px-1">
+<h2 class="font-title-md text-title-md text-text-primary font-semibold">Riwayat</h2>
+<button class="text-currency-idr font-label-md text-label-md hover:underline" type="button">Lihat Semua</button>
+</div>
+<!-- Grouped List Card -->
+<div class="bg-surface rounded-xl border border-outline shadow-sm divide-y divide-outline/80 overflow-hidden">
+<!-- Item 1: Bunga Kemarin -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-muted/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-interest-container text-interest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px] fill-icon">savings</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-text-primary font-semibold">Bunga Tabungan</span>
+<span class="bg-surface-muted text-text-secondary font-label-caps text-[10px] px-1.5 py-0.2 rounded font-medium">Otomatis</span>
+</div>
+<span class="font-body-sm text-[12px] text-text-secondary">Kemarin</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-amount-md text-amount-md text-interest font-bold block">+Rp1.280</span>
+<span class="font-body-sm text-[11px] text-text-disabled">SeaBank</span>
+</div>
+</div>
+<!-- Item 2: Bunga 22 Okt -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-muted/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-interest-container text-interest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px] fill-icon">savings</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-text-primary font-semibold">Bunga Tabungan</span>
+<span class="bg-surface-muted text-text-secondary font-label-caps text-[10px] px-1.5 py-0.2 rounded font-medium">Otomatis</span>
+</div>
+<span class="font-body-sm text-[12px] text-text-secondary">22 Okt</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-amount-md text-amount-md text-interest font-bold block">+Rp1.280</span>
+<span class="font-body-sm text-[11px] text-text-disabled">SeaBank</span>
+</div>
+</div>
+<!-- Item 3: Bunga 21 Okt -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-muted/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-interest-container text-interest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px] fill-icon">savings</span>
+</div>
+<div>
+<div class="flex items-center gap-1.5">
+<span class="font-label-md text-label-md text-text-primary font-semibold">Bunga Tabungan</span>
+<span class="bg-surface-muted text-text-secondary font-label-caps text-[10px] px-1.5 py-0.2 rounded font-medium">Otomatis</span>
+</div>
+<span class="font-body-sm text-[12px] text-text-secondary">21 Okt</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-amount-md text-amount-md text-interest font-bold block">+Rp1.280</span>
+<span class="font-body-sm text-[11px] text-text-disabled">SeaBank</span>
+</div>
+</div>
+<!-- Item 4: Penyesuaian Saldo 21 Okt -->
+<div class="p-3.5 flex items-center justify-between hover:bg-surface-muted/40 transition-colors">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-xl bg-surface-muted text-transfer flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[20px]">tune</span>
+</div>
+<div>
+<span class="font-label-md text-label-md text-text-primary font-semibold block">Penyesuaian saldo</span>
+<span class="font-body-sm text-[12px] text-text-secondary">21 Okt · Selisih audit</span>
+</div>
+</div>
+<div class="text-right">
+<span class="font-amount-md text-amount-md text-transfer font-bold block">+Rp420</span>
+<span class="font-body-sm text-[11px] text-text-disabled">Manual</span>
+</div>
+</div>
+</div>
+</section>
+</div>
+<!-- 7. iOS Home Indicator -->
+<footer class="mt-auto pt-4 pb-2 flex justify-center">
+<div class="w-36 h-1 bg-neutral-900/40 rounded-full"></div>
+</footer>
+</main>
+</body></html>

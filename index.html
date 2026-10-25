@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="default" />
+    <meta name="apple-mobile-web-app-title" content="Kantong" />
+    <meta name="theme-color" content="#F4F5F9" media="(prefers-color-scheme: light)" />
+    <meta name="theme-color" content="#0B0F17" media="(prefers-color-scheme: dark)" />
+    <link rel="icon" type="image/png" href="icons/favicon.png" />
+    <link rel="apple-touch-icon" href="icons/apple-touch-icon.png" />
+    <title>Kantong</title>
+    <!-- Static first frame (same spot as the animated intro) so there is no blank flash while JS loads -->
+    <style>
+      html, body { margin: 0; background: #f4f5f9; }
+      @media (prefers-color-scheme: dark) { html, body { background: #0b0f17; } }
+      .boot { position: fixed; inset: 0; display: flex; align-items: center; justify-content: center; }
+      .boot img { width: 112px; height: 112px; border-radius: 26px; box-shadow: 0 12px 32px rgba(15, 23, 42, 0.18); }
+    </style>
+  </head>
+  <body>
+    <div id="root"><div class="boot"><img src="icons/icon-512.png" alt="" /></div></div>
+    <script type="module" src="/src/main.tsx"></script>
+  </body>
+</html>

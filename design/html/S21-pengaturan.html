@@ -1,0 +1,512 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Pengaturan - Kantong</title>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Plus Jakarta Sans Font -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "primary-container": "#141b2b",
+            "on-primary": "#ffffff",
+            "surface": "#FFFFFF",
+            "inverse-primary": "#c0c6db",
+            "on-primary-container": "#7d8497",
+            "primary": "#000000",
+            "on-tertiary": "#ffffff",
+            "surface-container": "#f0edee",
+            "text-disabled": "#94A3B8",
+            "on-secondary": "#ffffff",
+            "on-background": "#1b1b1d",
+            "error": "#ba1a1a",
+            "tertiary": "#000000",
+            "on-primary-fixed": "#141b2b",
+            "on-surface": "#1b1b1d",
+            "secondary": "#515f74",
+            "currency-ntd-container": "#EDE9FE",
+            "outline": "#E3E6EC",
+            "on-secondary-fixed-variant": "#3a485b",
+            "background": "#F4F5F9",
+            "warning": "#B45309",
+            "secondary-fixed": "#d5e3fc",
+            "income": "#15803D",
+            "tertiary-fixed": "#f9debf",
+            "on-error-container": "#93000a",
+            "interest-container": "#D1FAE5",
+            "on-error": "#ffffff",
+            "warning-container": "#FEF3C7",
+            "primary-fixed-dim": "#c0c6db",
+            "secondary-container": "#d5e3fc",
+            "on-primary-fixed-variant": "#404758",
+            "on-tertiary-fixed": "#261906",
+            "text-primary": "#0F172A",
+            "tertiary-container": "#261906",
+            "surface-container-low": "#f6f3f4",
+            "primary-fixed": "#dce2f7",
+            "surface-muted": "#EEF0F4",
+            "interest": "#047857",
+            "surface-tint": "#575e70",
+            "inverse-surface": "#303031",
+            "transfer": "#475569",
+            "on-tertiary-container": "#968065",
+            "surface-variant": "#e5e2e3",
+            "secondary-fixed-dim": "#b9c7df",
+            "on-surface-variant": "#45464c",
+            "on-secondary-fixed": "#0d1c2e",
+            "surface-container-high": "#eae7e9",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "currency-ntd": "#7C3AED",
+            "text-secondary": "#475569",
+            "on-accent": "#FFFFFF",
+            "surface-container-lowest": "#ffffff",
+            "surface-bright": "#fcf8fa",
+            "currency-ntd-text": "#6D28D9",
+            "outline-variant": "#c6c6cd",
+            "expense": "#B91C1C",
+            "currency-idr": "#0369A1",
+            "on-secondary-container": "#57657a",
+            "error-container": "#ffdad6",
+            "surface-dim": "#dcd9db",
+            "inverse-on-surface": "#f3f0f1",
+            "on-tertiary-fixed-variant": "#55442d",
+            "currency-idr-container": "#E0F2FE",
+            "expense-container": "#FEE2E2",
+            "surface-container-highest": "#e5e2e3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "12px",
+            "space-2xl": "32px",
+            "space-xs": "4px",
+            "space-sm": "8px",
+            "gutter": "16px",
+            "space-xl": "24px",
+            "space-lg": "16px",
+            "margin": "16px"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-amount": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    .inset-divider {
+      margin-left: 52px;
+    }
+    /* Smooth toggle animation */
+    .toggle-checkbox:checked {
+      right: 2px;
+      transform: translateX(18px);
+    }
+    .toggle-checkbox {
+      transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    .toggle-bg {
+      transition: background-color 0.25s ease;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased min-h-screen flex justify-center selection:bg-currency-idr-container selection:text-currency-idr">
+<!-- iPhone 14 / 15 Device Frame wrapper for pixel-perfect presentation -->
+<div class="w-full max-w-[390px] min-h-screen bg-background relative flex flex-col pb-10 shadow-2xl overflow-x-hidden">
+<!-- iOS Status Bar (9:41) -->
+<header class="w-full pt-3 px-7 flex justify-between items-center text-text-primary z-30 select-none">
+<span class="font-body-md text-[15px] font-bold tracking-tight">9:41</span>
+<div class="flex items-center space-x-2 text-[14px]">
+<!-- Cellular Signal -->
+<svg class="w-4 h-3.5 fill-current" viewbox="0 0 17 12">
+<rect height="4" rx="0.5" width="3" x="0" y="8"></rect>
+<rect height="6.5" rx="0.5" width="3" x="4.5" y="5.5"></rect>
+<rect height="9" rx="0.5" width="3" x="9" y="3"></rect>
+<rect height="12" rx="0.5" width="3" x="13.5" y="0"></rect>
+</svg>
+<!-- Wifi -->
+<span class="material-symbols-outlined text-[17px] font-semibold leading-none">wifi</span>
+<!-- Battery -->
+<div class="flex items-center">
+<div class="w-6 h-3 rounded-[4px] border border-text-primary p-0.5 flex items-center">
+<div class="h-full w-4 bg-text-primary rounded-[1.5px]"></div>
+</div>
+<div class="w-0.5 h-1.5 bg-text-primary rounded-r-sm -ml-[0.5px]"></div>
+</div>
+</div>
+</header>
+<!-- Top Navigation Bar (iOS Style Nav with Back action) -->
+<!-- Destination Rule: Task-Focused sub-page with explicit '< Beranda' back item suppresses global bottom nav shell -->
+<nav class="w-full px-4 pt-2.5 pb-1 flex items-center justify-between z-20">
+<button class="inline-flex items-center gap-0.5 text-currency-idr active:opacity-60 transition-opacity -ml-1 py-1 px-1 rounded-lg" onclick="history.back()">
+<span class="material-symbols-outlined text-[24px] font-bold -mr-0.5">chevron_left</span>
+<span class="font-title-md text-[17px] font-medium tracking-normal leading-none">Beranda</span>
+</button>
+<div class="w-8"></div>
+</nav>
+<!-- Large Title Header -->
+<div class="px-5 pt-1 pb-4">
+<h1 class="font-headline-lg text-headline-lg font-bold text-text-primary tracking-tight">Pengaturan</h1>
+</div>
+<!-- Main Settings Canvas -->
+<main class="flex-1 px-4 space-y-6">
+<!-- GROUP 1: KURS & MATA UANG -->
+<section aria-labelledby="header-kurs">
+<h2 class="font-label-caps text-label-caps uppercase tracking-wider text-text-secondary px-2 mb-2 font-semibold" id="header-kurs">
+          Kurs &amp; Mata Uang
+        </h2>
+<div class="bg-surface rounded-2xl border border-outline shadow-none overflow-hidden">
+<!-- Row 1: Mata Uang Utama -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-currency-idr-container text-currency-idr flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">currency_exchange</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Mata uang utama</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="bg-currency-idr-container text-currency-idr font-amount-sm text-[12px] font-semibold px-2 py-0.5 rounded">IDR (Rp)</span>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 2: Sumber Kurs -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">sync</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Sumber kurs</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="font-body-md text-body-md text-text-secondary">Otomatis</span>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 3: Kurs NT$ -> IDR -->
+<div class="px-3.5 py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-currency-ntd-container text-currency-ntd flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">trending_up</span>
+</div>
+<div>
+<span class="font-body-md text-body-md text-text-primary font-medium block">Kurs NT$ → IDR</span>
+<span class="font-body-sm text-[12px] text-text-secondary block mt-0.5">diperbarui 2 jam lalu</span>
+</div>
+</div>
+<div class="flex items-center space-x-2">
+<span class="font-amount-md text-[15px] text-text-primary font-semibold tabular-nums">1 NT$ = Rp512</span>
+<button class="w-7 h-7 rounded-full flex items-center justify-center hover:bg-surface-muted active:scale-95 text-text-secondary" title="Sesuaikan Kurs">
+<span class="material-symbols-outlined text-[18px]">edit</span>
+</button>
+</div>
+</div>
+</div>
+</section>
+<!-- GROUP 2: INPUT CEPAT -->
+<section aria-labelledby="header-input">
+<h2 class="font-label-caps text-label-caps uppercase tracking-wider text-text-secondary px-2 mb-2 font-semibold" id="header-input">
+          Input Cepat
+        </h2>
+<div class="bg-surface rounded-2xl border border-outline shadow-none overflow-hidden">
+<!-- Row 1: Saat app dibuka -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-amber-100 text-warning flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">rocket_launch</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Saat app dibuka</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="font-body-md text-body-md text-text-secondary">Beranda</span>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 2: Favorit -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-warning-container text-amber-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">star</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Favorit</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="w-5 h-5 rounded-full bg-surface-muted text-text-secondary font-amount-sm text-[12px] font-semibold flex items-center justify-center">4</span>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 3: Tap favorit langsung simpan (Toggle Switch ON) -->
+<div class="px-3.5 py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3 pr-2">
+<div class="w-8 h-8 rounded-lg bg-interest-container text-interest flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">bolt</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Tap favorit langsung simpan</span>
+</div>
+<!-- iOS Toggle (ON state) -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input checked="" class="sr-only peer" id="toggle-quick-save" type="checkbox"/>
+<div class="w-12 h-7 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-income"></div>
+</label>
+</div>
+</div>
+<p class="font-body-sm text-[12px] text-text-secondary px-2 mt-2 leading-relaxed">
+          Tips: taruh ikon Kantong di Dock iPhone untuk akses pencatatan super cepat.
+        </p>
+</section>
+<!-- GROUP 3: PENGINGAT -->
+<section aria-labelledby="header-pengingat">
+<h2 class="font-label-caps text-label-caps uppercase tracking-wider text-text-secondary px-2 mb-2 font-semibold" id="header-pengingat">
+          Pengingat
+        </h2>
+<div class="bg-surface rounded-2xl border border-outline shadow-none overflow-hidden">
+<!-- Row 1: Pengingat catat harian -->
+<div class="px-3.5 py-3 flex flex-col gap-2.5">
+<div class="flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-rose-100 text-rose-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">notifications</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Pengingat catat harian</span>
+</div>
+<span class="font-amount-md text-body-md text-text-primary font-semibold tabular-nums">21:00</span>
+</div>
+<!-- Subtle Calendar Action Subrow -->
+<div class="pl-11">
+<button class="inline-flex items-center gap-1.5 text-currency-idr hover:text-sky-800 text-body-sm text-[12px] font-semibold bg-currency-idr-container/60 hover:bg-currency-idr-container px-2.5 py-1 rounded-md transition-colors active:scale-95">
+<span class="material-symbols-outlined text-[15px]">calendar_today</span>
+<span>Tambahkan ke Kalender</span>
+</button>
+</div>
+</div>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 2: Pengingat backup -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-orange-100 text-orange-600 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">alarm</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Pengingat backup</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="font-body-md text-body-md text-text-secondary">Tiap 7 hari</span>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</button>
+</div>
+</section>
+<!-- GROUP 4: DATA -->
+<section aria-labelledby="header-data">
+<h2 class="font-label-caps text-label-caps uppercase tracking-wider text-text-secondary px-2 mb-2 font-semibold" id="header-data">
+          Data
+        </h2>
+<div class="bg-surface rounded-2xl border border-outline shadow-none overflow-hidden">
+<!-- Row 1: Kategori -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-purple-100 text-purple-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">folder_special</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Kategori</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 2: Backup (Export JSON) -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-emerald-100 text-income flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">cloud_download</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Backup (Export JSON)</span>
+</div>
+<div class="flex items-center space-x-1.5">
+<span class="inline-flex items-center gap-1 bg-interest-container text-interest text-[12px] font-semibold px-2 py-0.5 rounded-full">
+<span class="material-symbols-outlined text-[14px]">check_circle</span>
+                2 hari lalu
+              </span>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 3: Export CSV Transaksi -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-blue-100 text-currency-idr flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">description</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Export CSV transaksi</span>
+</div>
+<div class="w-7 h-7 rounded-md flex items-center justify-center text-text-secondary hover:text-text-primary">
+<span class="material-symbols-outlined text-[20px]">ios_share</span>
+</div>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 4: Restore dari backup -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-amber-100 text-amber-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">restore</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Restore dari backup</span>
+</div>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</button>
+</div>
+</section>
+<!-- GROUP 5: TAMPILAN & PRIVASI -->
+<section aria-labelledby="header-tampilan">
+<h2 class="font-label-caps text-label-caps uppercase tracking-wider text-text-secondary px-2 mb-2 font-semibold" id="header-tampilan">
+          Tampilan &amp; Privasi
+        </h2>
+<div class="bg-surface rounded-2xl border border-outline shadow-none overflow-hidden">
+<!-- Row 1: Tema -->
+<button class="w-full text-left px-3.5 py-3 flex items-center justify-between active:bg-surface-muted transition-colors group">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-indigo-100 text-indigo-700 flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">dark_mode</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Tema</span>
+</div>
+<div class="flex items-center space-x-1">
+<span class="font-body-md text-body-md text-text-secondary">Ikuti iPhone</span>
+<span class="material-symbols-outlined text-[20px] text-text-disabled group-active:translate-x-0.5 transition-transform">chevron_right</span>
+</div>
+</button>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 2: Sembunyikan saldo saat dibuka (Toggle Switch OFF) -->
+<div class="px-3.5 py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3 pr-2">
+<div class="w-8 h-8 rounded-lg bg-surface-muted text-text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">visibility_off</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Sembunyikan saldo saat dibuka</span>
+</div>
+<!-- iOS Toggle (OFF state) -->
+<label class="relative inline-flex items-center cursor-pointer shrink-0">
+<input class="sr-only peer" id="toggle-hide-balance" type="checkbox"/>
+<div class="w-12 h-7 bg-outline-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-5 peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-income"></div>
+</label>
+</div>
+</div>
+</section>
+<!-- GROUP 6: TENTANG -->
+<section aria-labelledby="header-tentang">
+<h2 class="font-label-caps text-label-caps uppercase tracking-wider text-text-secondary px-2 mb-2 font-semibold" id="header-tentang">
+          Tentang
+        </h2>
+<div class="bg-surface rounded-2xl border border-outline shadow-none overflow-hidden">
+<!-- Row 1: Versi -->
+<div class="px-3.5 py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-surface-muted text-secondary flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">info</span>
+</div>
+<span class="font-body-md text-body-md text-text-primary font-medium">Versi</span>
+</div>
+<span class="font-body-md text-body-md text-text-secondary font-medium tabular-nums">1.1.0</span>
+</div>
+<div class="h-[1px] bg-outline inset-divider"></div>
+<!-- Row 2: Penyimpanan -->
+<div class="px-3.5 py-3 flex items-center justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-blue-50 text-currency-idr flex items-center justify-center shrink-0">
+<span class="material-symbols-outlined text-[19px]">dns</span>
+</div>
+<div>
+<span class="font-body-md text-body-md text-text-primary font-medium block">Penyimpanan</span>
+<span class="font-body-sm text-[12px] text-text-secondary block mt-0.5">tersimpan permanen di iPhone ini</span>
+</div>
+</div>
+<span class="font-amount-md text-[14px] text-text-primary font-semibold tabular-nums">2,4 MB</span>
+</div>
+</div>
+</section>
+<!-- Subtle Branding Footer -->
+<footer class="pt-2 pb-6 text-center">
+<div class="inline-flex items-center justify-center space-x-1.5 opacity-60">
+<span class="w-2 h-2 rounded-full bg-currency-idr"></span>
+<span class="w-2 h-2 rounded-full bg-currency-ntd"></span>
+</div>
+<p class="font-body-sm text-[12px] text-text-secondary mt-1 font-medium">
+          Kantong · Dibuat untuk kenyamanan finansial harian
+        </p>
+</footer>
+</main>
+<!-- iOS Home Indicator bar for standard 390px iPhone screen -->
+<div class="fixed bottom-1.5 left-1/2 -translate-x-1/2 w-32 h-1 bg-text-primary/25 rounded-full pointer-events-none z-50"></div>
+</div>
+<script>
+    // Micro-interaction feedbacks
+    document.querySelectorAll('button').forEach(btn => {
+      btn.addEventListener('touchstart', function() {
+        this.style.opacity = '0.7';
+      });
+      btn.addEventListener('touchend', function() {
+        this.style.opacity = '1';
+      });
+    });
+  </script>
+</body></html>

@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+
+<html lang="id">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Atur Batas Bulanan · Kantong</title>
+<!-- Google Fonts: Plus Jakarta Sans -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', '-apple-system', 'BlinkMacSystemFont', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              ink: '#111827',
+              bg: '#F4F5F9',
+              surface: '#FFFFFF',
+              muted: '#EEF0F4',
+              outline: '#E3E6EC',
+              textPrimary: '#0F172A',
+              textSecondary: '#475569',
+              textDisabled: '#94A3B8',
+              income: '#15803D',
+              expense: '#B91C1C',
+              expenseLight: '#FEE2E2',
+              warning: '#B45309',
+              warningLight: '#FEF3C7',
+              idr: '#0369A1',
+              idrLight: '#E0F2FE',
+              ntd: '#7C3AED',
+              ntdLight: '#EDE9FE',
+            }
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    /* Tabular numerals for amounts */
+    .tnum {
+      font-feature-settings: 'tnum' on, 'lnum' on;
+    }
+    /* iOS smooth tap highlight removal */
+    * {
+      -webkit-tap-highlight-color: transparent;
+      user-select: none;
+    }
+  </style>
+</head>
+<body class="bg-brand-bg min-h-screen antialiased p-0 font-sans flex justify-center">
+<!-- Mobile Frame (iPhone 390x844 approx native screen container) -->
+<div class="relative w-[390px] min-h-screen bg-brand-bg overflow-hidden flex flex-col justify-between">
+<!-- ============================================== -->
+<!-- BACKGROUND SCREEN: "Laporan / Budget" (Dimmed) -->
+<!-- ============================================== -->
+<div class="absolute inset-0 flex flex-col bg-brand-bg pointer-events-none select-none filter blur-[1.5px] scale-[0.985] transform-gpu transition-all">
+<!-- iOS Status Bar -->
+<div class="h-12 w-full pt-3 px-7 flex justify-between items-center z-10">
+<span class="text-[14px] font-bold text-brand-textPrimary tracking-tight">9:41</span>
+<div class="flex items-center space-x-2">
+<!-- Signal Icon -->
+<svg class="w-4 h-3 text-brand-textPrimary fill-current" viewbox="0 0 17 12">
+<path d="M1 9h2.5v3H1V9zm4-3h2.5v6H5V6zm4-3h2.5v9H9V3zm4-3h2.5v12H13V0z"></path>
+</svg>
+<!-- Wifi -->
+<svg class="w-4 h-3 text-brand-textPrimary fill-current" viewbox="0 0 16 12">
+<path d="M8 2.5C4.9 2.5 2.1 3.7 0 5.7l1.4 1.4C3.1 5.4 5.4 4.5 8 4.5s4.9.9 6.6 2.6L16 5.7C13.9 3.7 11.1 2.5 8 2.5zm0 4c-1.9 0-3.6.8-4.8 2l1.4 1.4C5.5 9 6.7 8.5 8 8.5s2.5.5 3.4 1.4l1.4-1.4c-1.2-1.2-2.9-2-4.8-2zm0 4c-.8 0-1.5.7-1.5 1.5S7.2 13.5 8 13.5s1.5-.7 1.5-1.5S8.8 10.5 8 10.5z"></path>
+</svg>
+<!-- Battery -->
+<div class="w-5 h-2.5 border border-brand-textPrimary rounded-[3px] p-[1px] flex items-center">
+<div class="h-full w-full bg-brand-textPrimary rounded-[1.5px]"></div>
+</div>
+</div>
+</div>
+<!-- App Header: Laporan -->
+<div class="px-5 pt-1 pb-3">
+<div class="flex items-center justify-between">
+<h1 class="text-[26px] font-bold text-brand-textPrimary tracking-tight">Laporan</h1>
+<button class="w-9 h-9 rounded-full bg-white flex items-center justify-center border border-brand-outline shadow-sm text-brand-textSecondary">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-8l-4-4m0 0L8 8m4-4v12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Segmented Control: Ringkasan vs Budget -->
+<div class="mt-3 flex p-1 bg-brand-muted rounded-xl">
+<div class="flex-1 py-1.5 text-center text-[13px] font-semibold text-brand-textSecondary rounded-lg">Ringkasan</div>
+<div class="flex-1 py-1.5 text-center text-[13px] font-bold text-brand-textPrimary bg-white rounded-lg shadow-sm">Budget</div>
+</div>
+</div>
+<!-- Scrollable Background Preview Mockup -->
+<div class="px-5 space-y-4 pt-1 overflow-hidden opacity-85">
+<!-- Month Selector -->
+<div class="flex items-center justify-between bg-white px-4 py-2.5 rounded-2xl border border-brand-outline/80">
+<span class="text-xs font-semibold text-brand-textSecondary">◀</span>
+<span class="text-sm font-bold text-brand-textPrimary">📅 Oktober 2026</span>
+<span class="text-xs font-semibold text-brand-textSecondary">▶</span>
+</div>
+<!-- Limit NTD Card -->
+<div class="bg-white rounded-2xl p-4 border border-brand-outline/80">
+<div class="flex items-center justify-between mb-1">
+<span class="text-xs font-bold text-brand-ntd bg-brand-ntdLight px-2 py-0.5 rounded-full">NTD</span>
+<span class="text-xs font-bold text-amber-700">83%</span>
+</div>
+<div class="text-sm text-brand-textSecondary mt-1">Pengeluaran NTD</div>
+<div class="text-[20px] font-bold text-brand-textPrimary mt-0.5 tnum">NT$12.480 <span class="text-xs font-medium text-brand-textSecondary">/ NT$15.000</span></div>
+<div class="w-full bg-brand-muted h-2 rounded-full mt-3 overflow-hidden">
+<div class="bg-amber-600 h-full rounded-full" style="width: 83%"></div>
+</div>
+</div>
+<!-- Budget Category Cards (Makan & Minum, etc.) -->
+<div class="bg-white rounded-2xl p-4 border border-brand-outline/80 space-y-3">
+<div class="flex justify-between items-center">
+<span class="text-xs font-bold uppercase tracking-wider text-brand-textSecondary">Pos Pengeluaran</span>
+<span class="text-xs font-semibold text-brand-ntd">Atur Pos</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center space-x-2.5">
+<div class="w-8 h-8 rounded-lg bg-orange-100 flex items-center justify-center text-sm">🍜</div>
+<div>
+<p class="text-xs font-bold text-brand-textPrimary">Makan &amp; Minum</p>
+<p class="text-[11px] text-brand-textSecondary tnum">NT$4.380 / NT$6.000</p>
+</div>
+</div>
+<span class="text-xs font-bold text-emerald-700">73%</span>
+</div>
+<div class="flex items-center justify-between pt-1">
+<div class="flex items-center space-x-2.5">
+<div class="w-8 h-8 rounded-lg bg-blue-100 flex items-center justify-center text-sm">🚇</div>
+<div>
+<p class="text-xs font-bold text-brand-textPrimary">Transportasi</p>
+<p class="text-[11px] text-brand-textSecondary tnum">NT$1.320 / NT$2.000</p>
+</div>
+</div>
+<span class="text-xs font-bold text-emerald-700">66%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- ============================================== -->
+<!-- BACKDROP OVERLAY (40% Dimming) -->
+<!-- ============================================== -->
+<div class="absolute inset-0 bg-black/45 backdrop-blur-[2px] z-20 transition-opacity"></div>
+<!-- ============================================== -->
+<!-- BOTTOM SHEET: "Atur Batas Bulanan"              -->
+<!-- Top rounded 24px, Grab handle, White surface    -->
+<!-- ============================================== -->
+<div class="relative z-30 mt-auto w-full bg-white rounded-t-[24px] shadow-[-0px_-10px_35px_rgba(15,23,42,0.22)] border-t border-slate-100 flex flex-col max-h-[730px]">
+<!-- Grab Handle -->
+<div class="w-full pt-3 pb-1 flex justify-center items-center">
+<div class="w-10 h-1 bg-slate-300 rounded-full"></div>
+</div>
+<!-- Sheet Header -->
+<div class="px-6 pt-2 pb-3">
+<div class="flex items-start justify-between">
+<div>
+<h2 class="text-[20px] font-bold text-brand-textPrimary tracking-tight">Atur Batas Bulanan</h2>
+<p class="text-[13px] text-brand-textSecondary mt-0.5 leading-snug">Total semua pengeluaran dalam satu bulan</p>
+</div>
+<!-- Close button pill -->
+<button class="w-7 h-7 rounded-full bg-brand-muted hover:bg-slate-200 flex items-center justify-center text-slate-500 transition-colors mt-0.5">
+<svg class="w-4 h-4" fill="none" stroke="currentColor" stroke-width="2.2" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+</div>
+<!-- Sheet Content (Grouped scrollable area) -->
+<div class="px-6 space-y-4 pb-4 overflow-y-auto">
+<!-- 1. Currency Segmented Control (NTD selected, violet · IDR) -->
+<div class="bg-brand-muted p-1 rounded-xl flex items-center border border-slate-200/60">
+<!-- NTD (Selected: violet background or pill) -->
+<button class="flex-1 py-2 rounded-lg bg-brand-ntd text-white shadow-sm flex items-center justify-center space-x-1.5 transition-all">
+<span class="w-2 h-2 rounded-full bg-white/90"></span>
+<span class="text-[13px] font-bold tracking-wide">NTD</span>
+<span class="text-[11px] text-violet-200 font-medium">(New Taiwan Dollar)</span>
+</button>
+<!-- IDR (Unselected) -->
+<button class="flex-1 py-2 rounded-lg text-brand-textSecondary hover:text-brand-textPrimary font-semibold text-[13px] flex items-center justify-center space-x-1 transition-all">
+<span>IDR</span>
+<span class="text-[11px] text-brand-textDisabled font-medium">(Rupiah)</span>
+</button>
+</div>
+<!-- 2. Large Amount Input (Focused, Ink Border) -->
+<div class="space-y-2">
+<label class="block text-[12px] font-bold uppercase tracking-wider text-brand-textSecondary">Nominal Batas</label>
+<div class="relative flex items-center bg-white border-2 border-brand-ink rounded-xl px-4 py-3.5 shadow-sm ring-4 ring-slate-900/5">
+<div class="flex items-baseline space-x-1 w-full">
+<span class="text-[20px] font-extrabold text-brand-textPrimary tracking-tight">NT$</span>
+<input class="w-full text-[30px] font-bold text-brand-textPrimary tnum bg-transparent outline-none tracking-tight leading-none" readonly="" type="text" value="15.000"/>
+</div>
+<!-- Clear / Cursor indicator -->
+<button class="w-6 h-6 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 hover:text-slate-600">
+<svg class="w-3.5 h-3.5" fill="none" stroke="currentColor" stroke-width="2.5" viewbox="0 0 24 24">
+<path d="M6 18L18 6M6 6l12 12" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</button>
+</div>
+<!-- Suggestion Chips -->
+<div class="flex flex-wrap gap-2 pt-0.5">
+<!-- Chip 1: Rata-rata 3 bulan -->
+<button class="flex items-center space-x-1 px-3 py-1.5 bg-brand-muted hover:bg-slate-200 border border-brand-outline rounded-full text-[12px] font-medium text-brand-textPrimary transition-colors active:scale-95">
+<svg class="w-3 h-3 text-brand-ntd fill-current" viewbox="0 0 24 24">
+<path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6h-6z"></path>
+</svg>
+<span>Rata-rata 3 bln: <strong class="font-bold tnum">NT$13.900</strong></span>
+</button>
+<!-- Chip 2: NT$12.000 -->
+<button class="px-3 py-1.5 bg-brand-muted hover:bg-slate-200 border border-brand-outline rounded-full text-[12px] font-semibold text-brand-textPrimary tnum transition-colors active:scale-95">
+              NT$12.000
+            </button>
+<!-- Chip 3: NT$18.000 -->
+<button class="px-3 py-1.5 bg-brand-muted hover:bg-slate-200 border border-brand-outline rounded-full text-[12px] font-semibold text-brand-textPrimary tnum transition-colors active:scale-95">
+              NT$18.000
+            </button>
+</div>
+</div>
+<!-- 3. Setting Card (Grouped iOS Settings style) -->
+<div class="bg-brand-bg rounded-2xl p-3.5 border border-brand-outline/80 space-y-3">
+<!-- Toggle Row: "Berlaku tiap bulan" (ON) -->
+<div class="flex items-center justify-between">
+<div class="pr-3">
+<p class="text-[14px] font-semibold text-brand-textPrimary">Berlaku tiap bulan</p>
+<p class="text-[12px] text-brand-textSecondary mt-0.5 leading-tight">Otomatis direset pada tanggal 1 setiap bulannya</p>
+</div>
+<!-- iOS Style Switch (Active / ON) -->
+<div class="w-12 h-7 bg-emerald-600 rounded-full p-0.5 flex items-center justify-end cursor-pointer shadow-inner">
+<div class="w-6 h-6 bg-white rounded-full shadow-md transform transition-transform"></div>
+</div>
+</div>
+<div class="h-[1px] bg-brand-outline/80 w-full"></div>
+<!-- Info Row with Bell Icon: "Peringatan di 80% dan 100%" -->
+<div class="flex items-center space-x-3">
+<div class="w-8 h-8 rounded-lg bg-amber-100 flex items-center justify-center text-brand-warning flex-shrink-0">
+<!-- Bell Icon -->
+<svg class="w-4 h-4 text-amber-700" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M15 17h5l-1.405-1.405A2.032 2.032 0 0118 14.158V11a6.002 6.002 0 00-4-5.659V5a2 2 0 10-4 0v.341C7.67 6.165 6 8.388 6 11v3.159c0 .538-.214 1.055-.595 1.436L4 17h5m6 0v1a3 3 0 11-6 0v-1m6 0H9" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+</div>
+<div class="flex-1">
+<p class="text-[13px] font-semibold text-brand-textPrimary">Peringatan di 80% dan 100%</p>
+<p class="text-[11px] text-brand-textSecondary">Muncul setelah kamu menyimpan transaksi</p>
+</div>
+<span class="text-[11px] font-bold text-amber-800 bg-amber-100 px-2 py-0.5 rounded-full">Aktif</span>
+</div>
+</div>
+<!-- 4. Secondary Note / Exclusions -->
+<div class="flex items-start space-x-2 px-1">
+<svg class="w-4 h-4 text-brand-textDisabled mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewbox="0 0 24 24">
+<path d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z" stroke-linecap="round" stroke-linejoin="round"></path>
+</svg>
+<p class="text-[11.5px] text-brand-textSecondary leading-relaxed">
+            Transfer, bunga, penyesuaian saldo, dan utang/piutang tidak dihitung dalam batas belanja ini.
+          </p>
+</div>
+</div>
+<!-- Sheet Footer: Action Buttons -->
+<div class="px-6 pt-2 pb-6 space-y-2 border-t border-slate-100 bg-white">
+<!-- Full-width Ink Primary Button "Simpan" (52px) -->
+<button class="w-full h-[52px] bg-brand-ink hover:bg-slate-800 active:scale-[0.99] transition-all text-white font-bold text-[15px] rounded-xl shadow-lg shadow-slate-900/10 flex items-center justify-center space-x-2">
+<span>Simpan Batas</span>
+</button>
+<!-- Red Text Button "Hapus batas" -->
+<button class="w-full py-2.5 text-center text-[13px] font-bold text-brand-expense hover:text-red-700 active:opacity-75 transition-all">
+          Hapus batas
+        </button>
+</div>
+<!-- iOS Home Indicator -->
+<div class="w-full pb-2 flex justify-center">
+<div class="w-32 h-1 bg-slate-300 rounded-full"></div>
+</div>
+</div>
+</div>
+</body>
+</html>

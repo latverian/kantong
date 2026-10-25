@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sisihkan - Kantong</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-container": "#7d8497",
+            "inverse-primary": "#c0c6db",
+            "on-primary-fixed": "#141b2b",
+            "inverse-on-surface": "#f3f0f1",
+            "transfer": "#475569",
+            "expense-container": "#FEE2E2",
+            "on-primary-fixed-variant": "#404758",
+            "warning": "#B45309",
+            "primary-container": "#141b2b",
+            "on-secondary-fixed": "#0d1c2e",
+            "on-background": "#1b1b1d",
+            "outline": "#E3E6EC",
+            "inverse-surface": "#303031",
+            "currency-idr": "#0369A1",
+            "text-disabled": "#94A3B8",
+            "surface-container-lowest": "#ffffff",
+            "surface-container-low": "#f6f3f4",
+            "surface-dim": "#dcd9db",
+            "surface-container": "#f0edee",
+            "primary": "#000000",
+            "on-tertiary-container": "#968065",
+            "on-secondary-fixed-variant": "#3a485b",
+            "background": "#F4F5F9",
+            "tertiary": "#000000",
+            "on-error": "#ffffff",
+            "currency-idr-container": "#E0F2FE",
+            "primary-fixed-dim": "#c0c6db",
+            "surface-variant": "#e5e2e3",
+            "on-tertiary": "#ffffff",
+            "on-primary": "#ffffff",
+            "currency-ntd-text": "#6D28D9",
+            "interest-container": "#D1FAE5",
+            "on-error-container": "#93000a",
+            "income": "#15803D",
+            "surface": "#FFFFFF",
+            "secondary-fixed-dim": "#b9c7df",
+            "on-tertiary-fixed": "#261906",
+            "warning-container": "#FEF3C7",
+            "tertiary-container": "#261906",
+            "tertiary-fixed": "#f9debf",
+            "error": "#ba1a1a",
+            "currency-ntd-container": "#EDE9FE",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "surface-muted": "#EEF0F4",
+            "primary-fixed": "#dce2f7",
+            "outline-variant": "#c6c6cd",
+            "surface-tint": "#575e70",
+            "on-secondary": "#ffffff",
+            "surface-container-high": "#eae7e9",
+            "on-accent": "#FFFFFF",
+            "text-secondary": "#475569",
+            "text-primary": "#0F172A",
+            "surface-bright": "#fcf8fa",
+            "secondary-container": "#d5e3fc",
+            "currency-ntd": "#7C3AED",
+            "on-surface": "#1b1b1d",
+            "secondary-fixed": "#d5e3fc",
+            "on-tertiary-fixed-variant": "#55442d",
+            "interest": "#047857",
+            "on-secondary-container": "#57657a",
+            "expense": "#B91C1C",
+            "error-container": "#ffdad6",
+            "on-surface-variant": "#45464c",
+            "secondary": "#515f74",
+            "surface-container-highest": "#e5e2e3"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "gutter": "16px",
+            "margin": "16px",
+            "space-md": "12px",
+            "space-lg": "16px",
+            "space-2xl": "32px",
+            "space-xs": "4px",
+            "space-xl": "24px",
+            "space-sm": "8px"
+          },
+          "fontFamily": {
+            "display-amount": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+    @keyframes cursor-blink {
+      0%, 49% { opacity: 1; }
+      50%, 100% { opacity: 0; }
+    }
+    .blinking-cursor {
+      animation: cursor-blink 1s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+    }
+    .sheet-shadow {
+      box-shadow: 0 -8px 32px rgba(15, 23, 42, 0.14);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="text-text-primary antialiased flex justify-center items-center min-h-screen p-0 select-none bg-background">
+<!-- iPhone Mobile Frame Canvas (390 x 844) -->
+<div class="relative w-[390px] overflow-hidden bg-background flex flex-col justify-between min-h-screen mx-auto">
+<!-- Status Bar (iOS standard) -->
+<div class="absolute top-0 left-0 right-0 z-30 h-11 px-7 flex items-center justify-between text-text-primary font-semibold text-xs tracking-tight pointer-events-none">
+<span>09:41</span>
+<div class="flex items-center space-x-1.5">
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[15px]" style="font-variation-settings: 'FILL' 1;">wifi</span>
+<span class="material-symbols-outlined text-[18px]" style="font-variation-settings: 'FILL' 1;">battery_full</span>
+</div>
+</div>
+<!-- BACKGROUND: Dimmed & Blurred "Target" Tab Screen Underneath -->
+<div class="absolute inset-0 flex flex-col pt-12 pb-20 px-margin overflow-hidden pointer-events-none select-none filter blur-[2px]">
+<!-- Top Bar of Background Screen -->
+<div class="flex items-center justify-between pt-space-md pb-space-sm mb-3">
+<div class="flex items-center space-x-2">
+<span class="font-headline-lg text-headline-lg font-bold text-text-primary tracking-tight">Rekening</span>
+</div>
+<div class="w-9 h-9 rounded-full bg-surface flex items-center justify-center text-text-secondary border border-outline">
+<span class="material-symbols-outlined text-lg" data-icon="visibility">visibility</span>
+</div>
+</div>
+<!-- Segmented Navigation Control -->
+<div class="bg-surface-muted p-1 rounded-xl flex items-center mb-5 border border-outline">
+<div class="flex-1 py-1.5 text-center font-label-md text-label-md text-text-secondary">Rekening</div>
+<div class="flex-1 py-1.5 text-center font-label-md text-label-md bg-surface text-text-primary font-bold rounded-lg shadow-sm border border-outline/50">Target</div>
+<div class="flex-1 py-1.5 text-center font-label-md text-label-md text-text-secondary">Utang</div>
+</div>
+<!-- Background Cards Stack -->
+<div class="space-y-3.5">
+<!-- Target Card 1: Dana Darurat -->
+<div class="bg-surface rounded-xl p-4 border border-outline shadow-sm space-y-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center space-x-2.5">
+<div class="w-10 h-10 rounded-xl bg-currency-idr-container text-currency-idr flex items-center justify-center font-bold">
+<span class="material-symbols-outlined" data-icon="shield">shield</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-text-primary font-bold">Dana Darurat</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">BCA Rupiah</p>
+</div>
+</div>
+<span class="bg-currency-idr-container text-currency-idr font-label-caps text-label-caps px-2 py-0.5 rounded-full">IDR</span>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-amount-sm text-amount-sm text-text-primary">Rp18.000.000</span>
+<span class="text-text-secondary">Target: Rp30.000.000</span>
+</div>
+<div class="w-full bg-surface-muted h-2 rounded-full overflow-hidden">
+<div class="bg-currency-idr h-full rounded-full" style="width: 60%"></div>
+</div>
+</div>
+</div>
+<!-- Target Card 2: Tiket Pulang -->
+<div class="bg-surface rounded-xl p-4 border border-outline shadow-sm space-y-3">
+<div class="flex justify-between items-start">
+<div class="flex items-center space-x-2.5">
+<div class="w-10 h-10 rounded-xl bg-currency-ntd-container text-currency-ntd flex items-center justify-center font-bold">
+<span class="material-symbols-outlined" data-icon="flight_takeoff">flight_takeoff</span>
+</div>
+<div>
+<h4 class="font-title-md text-title-md text-text-primary font-bold">Tiket Pulang ✈️</h4>
+<p class="font-body-sm text-body-sm text-text-secondary">Bank NT$</p>
+</div>
+</div>
+<span class="bg-currency-ntd-container text-currency-ntd-text font-label-caps text-label-caps px-2 py-0.5 rounded-full">NTD</span>
+</div>
+<div>
+<div class="flex justify-between text-xs mb-1">
+<span class="font-amount-sm text-amount-sm text-text-primary">NT$6.000</span>
+<span class="text-text-secondary">Target: NT$15.000</span>
+</div>
+<div class="w-full bg-surface-muted h-2 rounded-full overflow-hidden">
+<div class="bg-currency-ntd h-full rounded-full" style="width: 40%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- SEMANTIC SHELL: Bottom Navigation Bar (Dimmed underneath) -->
+<div class="absolute bottom-0 left-0 w-full z-10 flex justify-around items-center px-space-xs pb-6 pt-space-xs max-w-md mx-auto bg-surface border-t border-outline pointer-events-none filter blur-[1px]">
+<div class="flex flex-col items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps mt-0.5">Beranda</span>
+</div>
+<div class="flex flex-col items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps mt-0.5">Transaksi</span>
+</div>
+<div class="flex flex-col items-center justify-center text-text-secondary">
+<div class="w-9 h-9 rounded-full bg-primary text-white flex items-center justify-center mb-0.5">
+<span class="material-symbols-outlined text-xl" data-icon="add">add</span>
+</div>
+<span class="font-label-caps text-label-caps">Tambah</span>
+</div>
+<div class="flex flex-col items-center justify-center text-primary font-bold">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps mt-0.5">Rekening</span>
+</div>
+<div class="flex flex-col items-center justify-center text-text-secondary">
+<span class="material-symbols-outlined text-2xl" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-caps text-label-caps mt-0.5">Laporan</span>
+</div>
+</div>
+<!-- DIMMED BACKDROP OVERLAY (40% Black with backdrop blur) -->
+<div class="absolute inset-0 bg-black/40 backdrop-blur-[2.5px] z-20 transition-opacity duration-200"></div>
+<!-- BOTTOM SHEET COMPONENT: "Sisihkan" Modal (Task-Focused: suppress shell on top) -->
+<div class="absolute bottom-0 left-0 right-0 z-30 bg-surface rounded-t-[24px] sheet-shadow flex flex-col pt-3 px-5 pb-6 border-t border-outline/50 animate-slide-up">
+<!-- Grab Handle Pill -->
+<div class="self-center w-[36px] h-[4px] bg-[#E3E6EC] rounded-full mb-3.5 mt-0.5"></div>
+<!-- Sheet Header -->
+<div class="flex items-center justify-between pb-3.5 mb-2 border-b border-[#E3E6EC]/60">
+<div class="flex items-center space-x-1.5">
+<h2 class="font-headline-md text-headline-md text-[#0F172A] font-bold tracking-tight">Sisihkan untuk ✈️ Tiket Pulang</h2>
+</div>
+<button aria-label="Tutup modal" class="w-8 h-8 rounded-full bg-surface-muted hover:bg-[#E3E6EC] active:opacity-70 transition flex items-center justify-center text-text-secondary cursor-pointer">
+<span class="material-symbols-outlined text-[19px]" data-icon="close">close</span>
+</button>
+</div>
+<!-- Form Content inside Sheet -->
+<div class="space-y-3.5">
+<!-- 1. Source Account Row ("Dari") -->
+<div>
+<label class="block font-label-md text-label-md text-text-secondary mb-1.5">Dari Rekening</label>
+<div class="bg-surface-muted hover:bg-[#ebedf2] border border-[#E3E6EC] rounded-xl p-3 flex items-center justify-between transition-colors">
+<div class="flex items-center space-x-3">
+<div class="w-9 h-9 rounded-lg bg-surface border border-[#E3E6EC] flex items-center justify-center text-[#6D28D9] shadow-2xs">
+<span class="material-symbols-outlined text-xl" data-icon="account_balance">account_balance</span>
+</div>
+<div>
+<div class="flex items-center space-x-1.5">
+<span class="font-title-md text-title-md text-text-primary font-bold">Bank NT$</span>
+<span class="bg-[#EDE9FE] text-[#6D28D9] font-bold text-[11px] px-2 py-0.5 rounded-full tracking-wide">NTD</span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary mt-0.5">Bebas dipakai NT$15.000</p>
+</div>
+</div>
+<div class="text-text-secondary">
+<span class="material-symbols-outlined text-xl" data-icon="unfold_more">unfold_more</span>
+</div>
+</div>
+</div>
+<!-- 2. Large Amount Input Field -->
+<div>
+<label class="block font-label-md text-label-md text-text-secondary mb-1.5">Nominal disisihkan</label>
+<div class="border-2 border-[#111827] rounded-xl px-4 py-3 bg-surface flex items-center justify-between shadow-xs">
+<div class="flex items-center font-display-amount text-display-amount font-bold text-[#0F172A] tracking-tight">
+<span>NT$2.250</span>
+<span class="blinking-cursor text-primary font-light ml-0.5 -mt-1 text-3xl select-none">|</span>
+</div>
+<button class="w-7 h-7 rounded-full bg-surface-muted flex items-center justify-center text-text-secondary hover:text-text-primary">
+<span class="material-symbols-outlined text-base" data-icon="backspace">backspace</span>
+</button>
+</div>
+<!-- Quick Suggestion Chips -->
+<div class="flex items-center gap-1.5 mt-2.5 overflow-x-auto pb-0.5">
+<button class="bg-[#111827] text-white font-label-md text-label-md text-xs px-3 py-1.5 rounded-full flex items-center space-x-1 whitespace-nowrap shadow-xs active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-[13px]" data-icon="check" style="font-variation-settings: 'FILL' 1;">check</span>
+<span>Sesuai jadwal NT$2.250</span>
+</button>
+<button class="bg-[#EEF0F4] hover:bg-[#E3E6EC] text-[#0F172A] font-label-md text-label-md text-xs px-3 py-1.5 rounded-full border border-[#E3E6EC] whitespace-nowrap active:scale-95 transition-transform">
+              NT$1.000
+            </button>
+<button class="bg-[#EEF0F4] hover:bg-[#E3E6EC] text-[#0F172A] font-label-md text-label-md text-xs px-3 py-1.5 rounded-full border border-[#E3E6EC] whitespace-nowrap active:scale-95 transition-transform">
+              NT$5.000
+            </button>
+</div>
+</div>
+<!-- 3. Impact Preview Card -->
+<div class="bg-background rounded-xl p-3.5 space-y-2 border border-[#E3E6EC]">
+<div class="flex justify-between items-baseline">
+<span class="font-label-md text-label-md text-text-secondary">Progres Tiket Pulang</span>
+<span class="font-amount-md text-amount-md text-[#0F172A] font-bold tabular-nums">NT$8.250 / NT$15.000 · <span class="text-currency-ntd font-bold">55%</span></span>
+</div>
+<!-- Progress Bar -->
+<div class="w-full bg-[#EEF0F4] h-2 rounded-full overflow-hidden">
+<div class="bg-[#7C3AED] h-full rounded-full transition-all duration-300" style="width: 55%"></div>
+</div>
+<div class="flex items-center justify-between text-xs text-text-secondary pt-0.5">
+<span class="flex items-center gap-1 font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm text-[#7C3AED]" data-icon="trending_up">trending_up</span>
+              Bebas dipakai Bank NT$ menjadi <strong class="text-text-primary font-semibold">NT$12.750</strong>
+</span>
+</div>
+</div>
+<!-- 4. Info Note -->
+<div class="flex items-start space-x-2.5 px-3 py-2 bg-[#F8FAFC] rounded-lg border border-[#E3E6EC]/70">
+<span class="material-symbols-outlined text-base text-transfer mt-0.5" data-icon="info" style="font-variation-settings: 'FILL' 1;">info</span>
+<p class="font-body-sm text-body-sm text-[#475569] leading-relaxed">
+            Saldo Bank NT$ tidak berubah. Uang ini hanya ditandai untuk target.
+          </p>
+</div>
+<!-- 5. Primary Action Button -->
+<div class="pt-1">
+<button class="w-full bg-[#111827] text-white font-title-md text-title-md font-bold py-3.5 rounded-xl text-center active:scale-[0.99] hover:bg-black transition-all shadow-md flex items-center justify-center space-x-2 cursor-pointer">
+<span>Sisihkan</span>
+<span class="material-symbols-outlined text-lg" data-icon="arrow_forward">arrow_forward</span>
+</button>
+</div>
+</div>
+<!-- iOS Home Indicator Indicator Pill -->
+<div class="mt-4 flex justify-center">
+<div class="w-32 h-1 bg-slate-300 rounded-full"></div>
+</div>
+</div>
+</div>
+</body></html>

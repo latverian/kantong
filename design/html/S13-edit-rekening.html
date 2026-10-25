@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+
+<html class="light" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" name="viewport"/>
+<title>Edit Rekening - Kantong</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "surface-variant": "#e5e2e3",
+            "surface-container-high": "#eae7e9",
+            "expense-container": "#FEE2E2",
+            "on-secondary": "#ffffff",
+            "inverse-primary": "#c0c6db",
+            "primary": "#000000",
+            "surface-bright": "#fcf8fa",
+            "warning-container": "#FEF3C7",
+            "on-primary-fixed-variant": "#404758",
+            "surface-container-low": "#f6f3f4",
+            "on-tertiary-container": "#968065",
+            "primary-fixed-dim": "#c0c6db",
+            "secondary": "#515f74",
+            "secondary-fixed-dim": "#b9c7df",
+            "expense": "#B91C1C",
+            "secondary-container": "#d5e3fc",
+            "warning": "#B45309",
+            "background": "#F4F5F9",
+            "on-error": "#ffffff",
+            "on-tertiary": "#ffffff",
+            "currency-idr-container": "#E0F2FE",
+            "on-primary-container": "#7d8497",
+            "currency-ntd": "#7C3AED",
+            "transfer": "#475569",
+            "on-tertiary-fixed": "#261906",
+            "on-error-container": "#93000a",
+            "on-accent": "#FFFFFF",
+            "surface-container-lowest": "#ffffff",
+            "secondary-fixed": "#d5e3fc",
+            "text-secondary": "#475569",
+            "on-secondary-fixed-variant": "#3a485b",
+            "surface-container": "#f0edee",
+            "currency-ntd-container": "#EDE9FE",
+            "surface-dim": "#dcd9db",
+            "on-background": "#1b1b1d",
+            "income": "#15803D",
+            "tertiary-container": "#261906",
+            "text-disabled": "#94A3B8",
+            "primary-fixed": "#dce2f7",
+            "tertiary-fixed": "#f9debf",
+            "on-tertiary-fixed-variant": "#55442d",
+            "error-container": "#ffdad6",
+            "tertiary": "#000000",
+            "on-secondary-fixed": "#0d1c2e",
+            "on-primary-fixed": "#141b2b",
+            "text-primary": "#0F172A",
+            "on-surface-variant": "#45464c",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "on-secondary-container": "#57657a",
+            "outline": "#E3E6EC",
+            "on-surface": "#1b1b1d",
+            "surface-tint": "#575e70",
+            "interest-container": "#D1FAE5",
+            "surface-container-highest": "#e5e2e3",
+            "on-primary": "#ffffff",
+            "interest": "#047857",
+            "inverse-on-surface": "#f3f0f1",
+            "outline-variant": "#c6c6cd",
+            "error": "#ba1a1a",
+            "currency-ntd-text": "#6D28D9",
+            "currency-idr": "#0369A1",
+            "primary-container": "#141b2b",
+            "surface-muted": "#EEF0F4",
+            "surface": "#FFFFFF",
+            "inverse-surface": "#303031"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "4px",
+            "space-sm": "8px",
+            "gutter": "16px",
+            "space-xl": "24px",
+            "margin": "16px",
+            "space-lg": "16px",
+            "space-2xl": "32px",
+            "space-md": "12px"
+          },
+          "fontFamily": {
+            "title-md": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "display-amount": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }]
+          }
+        }
+      }
+    };
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    /* Hide scrollbars for clean presentation */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+</head>
+<body class="bg-background flex justify-center min-h-screen antialiased selection:bg-currency-idr-container selection:text-currency-idr m-0 p-0">
+<!-- iPhone Canvas Frame (390 x 844 pt) -->
+<main class="w-[390px] min-h-screen bg-background text-text-primary relative flex flex-col">
+<!-- Top Notch & iOS Status Bar -->
+<header class="pt-3 px-6 pb-2 flex justify-between items-center z-30 select-none bg-background">
+<span class="font-label-md text-label-md font-bold tracking-tight text-text-primary">9:41</span>
+<!-- Dynamic Island Mock -->
+<div class="flex items-center space-x-1.5 text-text-primary">
+<span class="material-symbols-outlined text-[16px] leading-none">signal_cellular_4_bar</span>
+<span class="material-symbols-outlined text-[16px] leading-none">wifi</span>
+<span class="material-symbols-outlined text-[18px] leading-none">battery_full</span>
+</div>
+</header>
+<!-- Modal Drag Handle Indicator -->
+<!-- Modal Navigation Bar (iOS Sheet Header) -->
+<nav class="px-margin py-space-sm flex items-center justify-between bg-background border-b border-outline/50 sticky top-0 z-20">
+<button class="font-body-md text-body-md text-text-secondary active:opacity-60 transition-opacity" type="button">
+        Batal
+      </button>
+<h1 class="font-title-md text-title-md font-bold text-text-primary text-center">
+        Edit Rekening
+      </h1>
+<button class="font-label-lg text-label-lg font-bold text-text-primary active:opacity-60 transition-opacity" type="button">
+        Simpan
+      </button>
+</nav>
+<!-- Form Body (iOS Grouped Inset Scrollable Content) -->
+<div class="flex-1 overflow-y-auto no-scrollbar px-margin pt-space-md pb-12 space-y-space-xl">
+<!-- KELOMPOK 1: INFORMASI UTAMA -->
+<section class="space-y-space-xs">
+<span class="font-label-caps text-label-caps text-text-secondary uppercase px-space-xs tracking-wider">Informasi Utama</span>
+<div class="bg-surface rounded-2xl border border-outline divide-y divide-outline shadow-sm overflow-hidden">
+<!-- Baris 1: Nama Rekening -->
+<div class="px-space-lg py-space-md flex items-center justify-between">
+<label class="font-body-md text-body-md text-text-secondary w-32 flex-shrink-0" for="account-name">
+              Nama rekening
+            </label>
+<input class="font-title-md text-title-md font-semibold text-text-primary text-right bg-transparent border-0 p-0 focus:ring-0 w-full" id="account-name" type="text" value="SeaBank"/>
+</div>
+<!-- Baris 2: Mata Uang (Locked) -->
+<div class="px-space-lg py-space-md">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-secondary">Mata uang</span>
+<div class="flex items-center space-x-1.5">
+<span class="inline-flex items-center px-2 py-0.5 rounded-full bg-currency-idr-container text-currency-idr font-label-md text-label-md font-bold tabular-nums">
+                  IDR
+                </span>
+<span class="material-symbols-outlined text-[17px] text-text-disabled" data-icon="lock">lock</span>
+</div>
+</div>
+<p class="font-body-sm text-body-sm text-text-disabled mt-1.5 leading-tight">
+              Tidak bisa diubah karena sudah ada transaksi
+            </p>
+</div>
+<!-- Baris 3: Segmented Control Jenis -->
+<div class="px-space-lg py-space-md flex items-center justify-between gap-2">
+<span class="font-body-md text-body-md text-text-secondary flex-shrink-0">Jenis</span>
+<div class="bg-surface-muted p-0.5 rounded-lg flex items-center w-56">
+<button class="flex-1 py-1 px-2 text-center rounded-[6px] bg-surface text-text-primary font-label-md text-label-md font-bold shadow-xs transition-all" type="button">
+                Bank
+              </button>
+<button class="flex-1 py-1 px-2 text-center rounded-[6px] text-text-secondary font-label-md text-label-md font-medium hover:text-text-primary transition-all" type="button">Tunai</button>
+<button class="flex-1 py-1 px-2 text-center rounded-[6px] text-text-secondary font-label-md text-label-md font-medium hover:text-text-primary transition-all" type="button">
+                E-wallet
+              </button>
+</div>
+</div>
+</div>
+</section>
+<!-- KELOMPOK 2: SALDO -->
+<section class="space-y-space-xs">
+<span class="font-label-caps text-label-caps text-text-secondary uppercase px-space-xs tracking-wider">Saldo</span>
+<div class="bg-surface rounded-2xl border border-outline p-space-lg shadow-sm space-y-2">
+<div class="flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-secondary">Saldo saat ini</span>
+<span class="font-amount-lg text-amount-lg font-bold text-text-primary tabular-nums">
+              Rp14.600.000
+            </span>
+</div>
+<div class="pt-1 border-t border-outline/50 flex items-center justify-between text-currency-idr active:opacity-70 cursor-pointer">
+<span class="font-body-sm text-body-sm font-semibold">Ubah lewat Sesuaikan Saldo</span>
+<span class="material-symbols-outlined text-[18px]">chevron_right</span>
+</div>
+</div>
+</section>
+<!-- KELOMPOK 3: TAMPILAN & IKON -->
+<section class="space-y-space-xs">
+<span class="font-label-caps text-label-caps text-text-secondary uppercase px-space-xs tracking-wider">Warna &amp; Ikon</span>
+<div class="bg-surface rounded-2xl border border-outline p-space-lg shadow-sm space-y-4">
+<div class="flex items-center space-x-space-md">
+<!-- Icon Tile -->
+<div class="w-12 h-12 rounded-xl bg-currency-idr-container text-currency-idr flex items-center justify-center flex-shrink-0 shadow-sm border border-currency-idr/15">
+<span class="material-symbols-outlined text-[26px]" data-icon="account_balance">account_balance</span>
+</div>
+<div class="flex-1">
+<p class="font-title-md text-title-md font-semibold text-text-primary">Ikon Tabungan</p>
+<p class="font-body-sm text-body-sm text-text-secondary">Gaya tampilan akun SeaBank</p>
+</div>
+<button class="text-text-secondary hover:text-text-primary" type="button">
+<span class="material-symbols-outlined text-[20px]">edit</span>
+</button>
+</div>
+<!-- Color Dots Selector (8 Colors) -->
+<div class="pt-2 border-t border-outline flex items-center justify-between px-1">
+<!-- 1: SeaBank / Vibrant Teal-Cyan (Selected) -->
+<button class="w-7 h-7 rounded-full bg-[#0284c7] ring-2 ring-offset-2 ring-[#0284c7] flex items-center justify-center focus:outline-none" type="button">
+<span class="w-2 h-2 rounded-full bg-white"></span>
+</button>
+<!-- 2: Emerald -->
+<button class="w-7 h-7 rounded-full bg-[#10b981] hover:scale-105 transition-transform" type="button"></button>
+<!-- 3: Blue IDR -->
+<button class="w-7 h-7 rounded-full bg-[#2563eb] hover:scale-105 transition-transform" type="button"></button>
+<!-- 4: Violet NTD -->
+<button class="w-7 h-7 rounded-full bg-[#7c3aed] hover:scale-105 transition-transform" type="button"></button>
+<!-- 5: Amber Gold -->
+<button class="w-7 h-7 rounded-full bg-[#f59e0b] hover:scale-105 transition-transform" type="button"></button>
+<!-- 6: Coral Orange -->
+<button class="w-7 h-7 rounded-full bg-[#ea580c] hover:scale-105 transition-transform" type="button"></button>
+<!-- 7: Rose / Pink -->
+<button class="w-7 h-7 rounded-full bg-[#f43f5e] hover:scale-105 transition-transform" type="button"></button>
+<!-- 8: Slate Gray -->
+<button class="w-7 h-7 rounded-full bg-[#475569] hover:scale-105 transition-transform" type="button"></button>
+</div>
+</div>
+</section>
+<!-- KELOMPOK 4: PENGATURAN BUNGA TABUNGAN -->
+<section class="space-y-space-xs">
+<span class="font-label-caps text-label-caps text-text-secondary uppercase px-space-xs tracking-wider">Bunga Tabungan</span>
+<div class="bg-surface rounded-2xl border border-outline divide-y divide-outline shadow-sm overflow-hidden">
+<!-- Toggle Row -->
+<div class="px-space-lg py-space-md flex items-center justify-between">
+<div>
+<span class="font-title-md text-title-md font-semibold text-text-primary block">Rekening berbunga</span>
+<span class="font-body-sm text-body-sm text-text-secondary">Hitung akrual imbal hasil harian</span>
+</div>
+<!-- iOS Green Toggle Switch (ON) -->
+<label class="relative inline-flex items-center cursor-pointer">
+<input checked="" class="sr-only peer" type="checkbox"/>
+<div class="w-12 h-7 bg-surface-variant peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[3px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-6 after:w-6 after:transition-all peer-checked:bg-[#10b981]"></div>
+</label>
+</div>
+<!-- Suku Bunga -->
+<div class="px-space-lg py-space-md flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-secondary">Suku bunga</span>
+<div class="flex items-center space-x-1.5">
+<input class="w-10 text-right font-amount-md text-amount-md font-bold text-text-primary bg-transparent border-0 p-0 focus:ring-0 tabular-nums" type="text" value="4"/>
+<span class="font-body-md text-body-md text-text-secondary">% per tahun</span>
+</div>
+</div>
+<!-- Pencairan -->
+<div class="px-space-lg py-space-md flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-secondary">Pencairan</span>
+<div class="bg-surface-muted p-0.5 rounded-lg flex items-center w-40">
+<button class="flex-1 py-1 text-center rounded-[6px] bg-surface text-text-primary font-label-md text-label-md font-bold shadow-xs" type="button">
+                Harian
+              </button>
+<button class="flex-1 py-1 text-center rounded-[6px] text-text-secondary font-label-md text-label-md font-medium" type="button">
+                Bulanan
+              </button>
+</div>
+</div>
+<!-- Pajak Bunga -->
+<div class="px-space-lg py-space-md flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-secondary">Pajak bunga</span>
+<div class="flex items-center space-x-1">
+<input class="w-8 text-right font-amount-md text-amount-md font-bold text-text-primary bg-transparent border-0 p-0 focus:ring-0 tabular-nums" type="text" value="20"/>
+<span class="font-body-md text-body-md text-text-secondary">%</span>
+</div>
+</div>
+<!-- Batas Saldo Kena Pajak -->
+<div class="px-space-lg py-space-md flex items-center justify-between">
+<span class="font-body-md text-body-md text-text-secondary">Batas saldo kena pajak</span>
+<input class="w-32 text-right font-amount-md text-amount-md font-bold text-text-primary bg-transparent border-0 p-0 focus:ring-0 tabular-nums" type="text" value="Rp7.500.000"/>
+</div>
+</div>
+</section>
+<!-- KARTU PRATINJAU ESTIMASI BUNGA (Emerald-tinted card) -->
+<section class="bg-interest-container rounded-2xl p-space-lg border border-interest/20 space-y-2"><div class="flex items-center space-x-2 text-interest"><span class="material-symbols-outlined text-[20px]" data-icon="auto_awesome">auto_awesome</span><span class="font-label-md text-label-md font-bold uppercase tracking-wide">Estimasi Bunga Bersih</span></div><div class="space-y-1"><p class="font-amount-lg text-amount-lg font-bold text-interest tabular-nums">+Rp1.280<span class="text-xs font-normal">/hari</span><span class="text-interest/60 font-light mx-1">·</span><span class="text-body-md font-semibold text-interest">≈ Rp38.400<span class="text-xs font-normal">/bulan</span></span></p><p class="font-body-sm text-body-sm text-interest/85 leading-normal">Dihitung otomatis dari saldo Rp14.600.000 setelah dipotong pajak 20%.</p></div></section>
+<!-- BAGIAN BAWAH / FOOTER DESTRUKTIF -->
+<footer class="pt-4 pb-6 space-y-3"><button class="w-full py-3.5 bg-surface rounded-2xl border border-outline text-expense font-label-lg text-label-lg font-semibold text-center active:bg-expense-container/50 transition-colors" type="button">Arsipkan rekening</button><p class="font-body-sm text-body-sm text-text-disabled text-center px-4 leading-tight">Rekening yang diarsipkan akan disembunyikan tanpa merusak riwayat mutasi transaksi Anda.</p></footer>
+</div>
+<!-- iOS Home Indicator bar -->
+<div class="pb-2 pt-1 flex justify-center bg-background select-none z-30">
+<div class="w-36 h-1 rounded-full bg-text-primary/70"></div>
+</div>
+</main>
+</body></html>

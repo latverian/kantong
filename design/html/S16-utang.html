@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Rekening · Utang &amp; Piutang - Kantong</title>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "on-primary-fixed-variant": "#404758",
+            "text-disabled": "#94A3B8",
+            "surface-container-lowest": "#ffffff",
+            "primary-container": "#141b2b",
+            "surface-container-high": "#eae7e9",
+            "on-background": "#1b1b1d",
+            "secondary": "#515f74",
+            "secondary-fixed": "#d5e3fc",
+            "surface-dim": "#dcd9db",
+            "surface-container-low": "#f6f3f4",
+            "tertiary": "#000000",
+            "tertiary-container": "#261906",
+            "surface-bright": "#fcf8fa",
+            "currency-ntd": "#7C3AED",
+            "outline": "#E3E6EC",
+            "on-tertiary": "#ffffff",
+            "currency-ntd-text": "#6D28D9",
+            "expense-container": "#FEE2E2",
+            "warning-container": "#FEF3C7",
+            "on-tertiary-fixed-variant": "#55442d",
+            "surface-container-highest": "#e5e2e3",
+            "surface-muted": "#EEF0F4",
+            "on-error-container": "#93000a",
+            "surface": "#FFFFFF",
+            "error": "#ba1a1a",
+            "surface-tint": "#575e70",
+            "secondary-fixed-dim": "#b9c7df",
+            "currency-idr": "#0369A1",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "on-surface": "#1b1b1d",
+            "on-primary": "#FFFFFF",
+            "inverse-on-surface": "#f3f0f1",
+            "income": "#15803D",
+            "currency-ntd-container": "#EDE9FE",
+            "outline-variant": "#c6c6cd",
+            "on-accent": "#FFFFFF",
+            "error-container": "#ffdad6",
+            "transfer": "#475569",
+            "on-error": "#ffffff",
+            "on-secondary-fixed": "#0d1c2e",
+            "inverse-primary": "#c0c6db",
+            "interest-container": "#D1FAE5",
+            "warning": "#B45309",
+            "primary-fixed-dim": "#c0c6db",
+            "on-secondary-container": "#57657a",
+            "on-secondary-fixed-variant": "#3a485b",
+            "on-tertiary-fixed": "#261906",
+            "primary-fixed": "#dce2f7",
+            "surface-container": "#f0edee",
+            "secondary-container": "#d5e3fc",
+            "inverse-surface": "#303031",
+            "on-tertiary-container": "#968065",
+            "text-secondary": "#475569",
+            "on-surface-variant": "#45464c",
+            "tertiary-fixed": "#f9debf",
+            "expense": "#B91C1C",
+            "background": "#F4F5F9",
+            "on-primary-container": "#7d8497",
+            "currency-idr-container": "#E0F2FE",
+            "primary": "#000000",
+            "surface-variant": "#e5e2e3",
+            "text-primary": "#0F172A",
+            "on-primary-fixed": "#141b2b",
+            "interest": "#047857",
+            "on-secondary": "#ffffff"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-md": "12px",
+            "margin": "16px",
+            "space-xs": "4px",
+            "space-xl": "24px",
+            "space-lg": "16px",
+            "space-sm": "8px",
+            "space-2xl": "32px",
+            "gutter": "16px"
+          },
+          "fontFamily": {
+            "body-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "display-amount": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .pb-safe {
+      padding-bottom: env(safe-area-inset-bottom, 20px);
+    }
+    .pt-safe {
+      padding-top: env(safe-area-inset-top, 44px);
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased font-body-md flex justify-center min-h-screen">
+<!-- Mobile Device Shell Viewport -->
+<main class="w-full max-w-md bg-background min-h-screen flex flex-col relative shadow-sm">
+<!-- 1. iOS Status Bar (9:41) -->
+<header class="w-full pt-safe px-margin flex justify-between items-center text-text-primary select-none z-30">
+<div class="font-headline-md text-headline-md tracking-tight font-bold text-sm">9:41</div>
+<div class="flex items-center space-x-1.5 text-text-primary">
+<span class="material-symbols-outlined text-[17px] leading-none" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[17px] leading-none" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[19px] leading-none" data-icon="battery_full">battery_full</span>
+</div>
+</header>
+<!-- 2. Header & Action Row -->
+<section class="px-margin pt-space-md pb-space-xs flex justify-between items-center">
+<h1 class="font-headline-lg text-headline-lg text-text-primary font-bold tracking-tight">Rekening</h1>
+<button aria-label="Tambah catatan utang atau piutang" class="w-9 h-9 rounded-full bg-surface border border-outline flex items-center justify-center text-text-primary active:scale-95 transition-transform hover:bg-surface-muted" type="button">
+<span class="material-symbols-outlined text-xl" data-icon="add">add</span>
+</button>
+</section>
+<!-- 3. Segmented Control -->
+<section class="px-margin pt-space-xs pb-space-sm">
+<nav aria-label="Navigasi Rekening" class="bg-surface-muted p-1 rounded-xl flex items-center gap-1 border border-outline/50">
+<button class="flex-1 py-1.5 text-center font-label-md text-label-md text-text-secondary rounded-lg active:opacity-70 transition-all hover:text-text-primary" type="button">
+          Rekening
+        </button>
+<button class="flex-1 py-1.5 text-center font-label-md text-label-md text-text-secondary rounded-lg active:opacity-70 transition-all hover:text-text-primary" type="button">
+          Target
+        </button>
+<button class="flex-1 py-1.5 text-center font-label-md text-label-md text-text-primary font-semibold bg-surface rounded-lg shadow-sm border border-outline/40 transition-all" type="button">
+          Utang
+        </button>
+</nav>
+</section>
+<!-- 4. Subheader Summary Meta -->
+<section class="px-margin pt-space-xs pb-space-xs flex justify-between items-center">
+<span class="font-body-sm text-body-sm text-text-secondary">1 piutang · 1 utang aktif</span>
+<span class="font-label-caps text-label-caps tracking-wider text-text-disabled uppercase">MULTI-VALUTA</span>
+</section>
+<!-- Scrollable Content Canvas -->
+<div class="flex-1 px-margin pb-32 space-y-space-lg overflow-y-auto">
+<!-- 5. Summary Cards (2-column Bento Grid) -->
+<section class="grid grid-cols-2 gap-3 pt-space-xs">
+<!-- Card 1: Piutang -->
+<article class="bg-surface p-space-md rounded-2xl border border-outline flex flex-col justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-text-primary">Piutang</span>
+<span class="w-2 h-2 rounded-full bg-income"></span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary leading-snug">Orang berutang padaku</p>
+</div>
+<div class="mt-space-md">
+<p class="font-amount-lg text-amount-lg text-income tabular-nums tracking-tight">NT$1.500</p>
+<p class="font-body-sm text-body-sm text-text-secondary tabular-nums mt-0.5">≈ Rp768.000</p>
+</div>
+</article>
+<!-- Card 2: Utang -->
+<article class="bg-surface p-space-md rounded-2xl border border-outline flex flex-col justify-between shadow-[0_1px_2px_rgba(0,0,0,0.02)]">
+<div>
+<div class="flex items-center justify-between mb-1">
+<span class="font-label-md text-label-md text-text-primary">Utang</span>
+<span class="w-2 h-2 rounded-full bg-expense"></span>
+</div>
+<p class="font-body-sm text-body-sm text-text-secondary leading-snug">Aku berutang</p>
+</div>
+<div class="mt-space-md">
+<p class="font-amount-lg text-amount-lg text-expense tabular-nums tracking-tight">Rp1.000.000</p>
+<p class="font-body-sm text-body-sm text-text-secondary tabular-nums mt-0.5">Jatuh tempo: 30 Nov</p>
+</div>
+</article>
+</section>
+<!-- 6. Section "PIUTANG (NTD)" -->
+<section class="space-y-space-xs">
+<header class="flex items-center justify-between px-1">
+<span class="font-label-caps text-label-caps tracking-wider text-text-secondary uppercase">PIUTANG · NTD</span>
+<span class="font-label-caps text-label-caps text-currency-ntd-text font-bold bg-currency-ntd-container px-1.5 py-0.5 rounded">NTD</span>
+</header>
+<!-- Grouped Card Container: Andi -->
+<div class="bg-surface rounded-2xl border border-outline p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-interest-container text-interest flex items-center justify-center font-headline-md text-base font-semibold">
+                A
+              </div>
+<div>
+<h3 class="font-title-md text-title-md text-text-primary font-semibold">Andi</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Piutang · dari Dompet NT$</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-amount-md text-amount-md text-income tabular-nums font-bold">NT$1.500</p>
+<p class="font-body-sm text-body-sm text-text-secondary tabular-nums">sisa dari NT$2.000</p>
+</div>
+</div>
+<!-- Progress Bar (25% paid) -->
+<div class="space-y-1">
+<div class="w-full bg-surface-muted h-1.5 rounded-full overflow-hidden">
+<div class="bg-income h-full rounded-full transition-all duration-300" style="width: 25%"></div>
+</div>
+</div>
+<!-- Row Footer Info -->
+<div class="flex items-center justify-between pt-1 border-t border-outline/50">
+<div class="flex items-center text-text-secondary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm mr-1.5 text-text-disabled" data-icon="event">event</span>
+<span>Jatuh tempo 10 Nov · 17 hari lagi</span>
+</div>
+<span class="bg-surface-muted text-text-secondary font-label-md text-xs px-2.5 py-0.5 rounded-full font-medium">
+              Sebagian
+            </span>
+</div>
+</div>
+</section>
+<!-- 7. Section "UTANG (IDR)" -->
+<section class="space-y-space-xs">
+<header class="flex items-center justify-between px-1">
+<span class="font-label-caps text-label-caps tracking-wider text-text-secondary uppercase">UTANG · IDR</span>
+<span class="font-label-caps text-label-caps text-currency-idr font-bold bg-currency-idr-container px-1.5 py-0.5 rounded">IDR</span>
+</header>
+<!-- Grouped Card Container: Kak Dewi -->
+<div class="bg-surface rounded-2xl border border-outline p-4 shadow-[0_1px_2px_rgba(0,0,0,0.02)] space-y-3">
+<div class="flex items-start justify-between">
+<div class="flex items-center space-x-3">
+<div class="w-10 h-10 rounded-full bg-expense-container text-expense flex items-center justify-center font-headline-md text-base font-semibold">
+                D
+              </div>
+<div>
+<h3 class="font-title-md text-title-md text-text-primary font-semibold">Kak Dewi</h3>
+<p class="font-body-sm text-body-sm text-text-secondary">Utang · ke BCA</p>
+</div>
+</div>
+<div class="text-right">
+<p class="font-amount-md text-amount-md text-expense tabular-nums font-bold">Rp1.000.000</p>
+<p class="font-body-sm text-body-sm text-text-secondary tabular-nums">belum dicicil</p>
+</div>
+</div>
+<!-- Progress Bar (0% paid) -->
+<div class="space-y-1">
+<div class="w-full bg-surface-muted h-1.5 rounded-full overflow-hidden">
+<div class="bg-expense h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+</div>
+</div>
+<!-- Row Footer Info -->
+<div class="flex items-center justify-between pt-1 border-t border-outline/50">
+<div class="flex items-center text-text-secondary font-body-sm text-body-sm">
+<span class="material-symbols-outlined text-sm mr-1.5 text-text-disabled" data-icon="event">event</span>
+<span>Jatuh tempo 30 Nov · 37 hari lagi</span>
+</div>
+<span class="bg-warning-container text-warning font-label-md text-xs px-2.5 py-0.5 rounded-full font-medium">
+              Belum dibayar
+            </span>
+</div>
+</div>
+</section>
+<!-- 8. Collapsed History Row -->
+<section>
+<button class="w-full bg-surface rounded-xl border border-outline px-4 py-3 flex items-center justify-between active:bg-surface-muted transition-colors shadow-[0_1px_2px_rgba(0,0,0,0.02)]" type="button">
+<div class="flex items-center space-x-2.5">
+<span class="material-symbols-outlined text-interest text-xl" data-icon="check_circle">check_circle</span>
+<span class="font-title-md text-title-md text-text-primary font-medium">Lunas</span>
+<span class="font-label-caps text-label-caps bg-surface-muted text-text-secondary px-2 py-0.5 rounded-full">2</span>
+</div>
+<span class="material-symbols-outlined text-text-disabled text-xl" data-icon="expand_more">expand_more</span>
+</button>
+</section>
+<!-- 9. Bottom Action Button -->
+<section class="pt-space-xs">
+<button class="w-full py-3.5 px-4 bg-surface-muted hover:bg-surface-container active:scale-[0.99] border border-outline/60 text-text-primary rounded-xl font-label-lg text-label-lg flex items-center justify-center space-x-2 transition-all" type="button">
+<span class="material-symbols-outlined text-lg" data-icon="add">add</span>
+<span>Catat Utang / Piutang</span>
+</button>
+</section>
+</div>
+<!-- 10. Bottom Navigation Bar (Shared Component Anchor) -->
+<nav aria-label="Navigasi Utama" class="fixed bottom-0 left-0 w-full z-50 bg-surface border-t border-outline dark:border-outline-variant/30 flex justify-around items-center px-space-xs pb-safe pt-space-xs max-w-md mx-auto shadow-sm">
+<!-- 1. Beranda -->
+<button class="flex flex-col items-center justify-center text-text-secondary dark:text-text-disabled hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-2xl" data-icon="home">home</span>
+<span class="font-label-caps text-label-caps mt-0.5">Beranda</span>
+</button>
+<!-- 2. Transaksi -->
+<button class="flex flex-col items-center justify-center text-text-secondary dark:text-text-disabled hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-2xl" data-icon="receipt_long">receipt_long</span>
+<span class="font-label-caps text-label-caps mt-0.5">Transaksi</span>
+</button>
+<!-- 3. Tambah (Center Quick Add) -->
+<div class="flex flex-col items-center justify-center flex-1">
+<button aria-label="Tambah Transaksi Baru" class="w-11 h-11 bg-primary text-on-primary rounded-full flex items-center justify-center shadow-md active:scale-95 transition-transform" type="button">
+<span class="material-symbols-outlined text-2xl" data-icon="add">add</span>
+</button>
+</div>
+<!-- 4. Rekening (Active Destination) -->
+<button class="flex flex-col items-center justify-center text-primary dark:text-inverse-primary font-bold hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-2xl" data-icon="account_balance_wallet" style="font-variation-settings: 'FILL' 1;">account_balance_wallet</span>
+<span class="font-label-caps text-label-caps mt-0.5">Rekening</span>
+</button>
+<!-- 5. Laporan -->
+<button class="flex flex-col items-center justify-center text-text-secondary dark:text-text-disabled hover:text-primary dark:hover:text-inverse-primary active:scale-95 transition-transform duration-150 py-1 flex-1" type="button">
+<span class="material-symbols-outlined text-2xl" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-caps text-label-caps mt-0.5">Laporan</span>
+</button>
+</nav>
+</main>
+</body></html>

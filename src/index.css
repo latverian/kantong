@@ -1,0 +1,313 @@
+@import 'tailwindcss';
+@import '@fontsource-variable/plus-jakarta-sans';
+
+/* Design tokens from DESIGN.md. Light is the default; dark follows data-theme on <html>. */
+:root {
+  --c-bg: #f4f5f9;
+  --c-surface: #ffffff;
+  --c-muted: #eef0f4;
+  --c-outline: #e3e6ec;
+  --c-ink: #0f172a;
+  --c-sub: #475569;
+  --c-disabled: #94a3b8;
+  --c-primary: #111827;
+  --c-on-primary: #ffffff;
+  --c-income: #15803d;
+  --c-expense: #b91c1c;
+  --c-expense-c: #fee2e2;
+  --c-transfer: #475569;
+  --c-interest: #047857;
+  --c-interest-c: #d1fae5;
+  --c-warning: #b45309;
+  --c-warning-c: #fef3c7;
+  --c-idr: #0369a1;
+  --c-idr-c: #e0f2fe;
+  --c-ntd: #7c3aed;
+  --c-ntd-text: #6d28d9;
+  --c-ntd-c: #ede9fe;
+  --c-idr-card: #0369a1;
+  --c-ntd-card: #7c3aed;
+  --c-backdrop: rgb(15 23 42 / 0.4);
+  color-scheme: light;
+}
+
+:root[data-theme='dark'] {
+  --c-bg: #0b0f17;
+  --c-surface: #151a23;
+  --c-muted: #1e2430;
+  --c-outline: #2a3140;
+  --c-ink: #f1f5f9;
+  --c-sub: #94a3b8;
+  --c-disabled: #475569;
+  --c-primary: #f8fafc;
+  --c-on-primary: #0b0f17;
+  --c-income: #4ade80;
+  --c-expense: #f87171;
+  --c-expense-c: #3b1518;
+  --c-transfer: #94a3b8;
+  --c-interest: #34d399;
+  --c-interest-c: #0d2e24;
+  --c-warning: #fbbf24;
+  --c-warning-c: #33260b;
+  --c-idr: #38bdf8;
+  --c-idr-c: #0c2a3d;
+  --c-ntd: #a78bfa;
+  --c-ntd-text: #c4b5fd;
+  --c-ntd-c: #241b3d;
+  --c-idr-card: #075985;
+  --c-ntd-card: #6d28d9;
+  --c-backdrop: rgb(0 0 0 / 0.6);
+  color-scheme: dark;
+}
+
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+@theme inline {
+  --font-sans: 'Plus Jakarta Sans Variable', ui-sans-serif, system-ui, -apple-system, sans-serif;
+  --color-bg: var(--c-bg);
+  --color-surface: var(--c-surface);
+  --color-muted: var(--c-muted);
+  --color-outline: var(--c-outline);
+  --color-ink: var(--c-ink);
+  --color-sub: var(--c-sub);
+  --color-disabled: var(--c-disabled);
+  --color-primary: var(--c-primary);
+  --color-on-primary: var(--c-on-primary);
+  --color-income: var(--c-income);
+  --color-expense: var(--c-expense);
+  --color-expense-c: var(--c-expense-c);
+  --color-transfer: var(--c-transfer);
+  --color-interest: var(--c-interest);
+  --color-interest-c: var(--c-interest-c);
+  --color-warning: var(--c-warning);
+  --color-warning-c: var(--c-warning-c);
+  --color-idr: var(--c-idr);
+  --color-idr-c: var(--c-idr-c);
+  --color-ntd: var(--c-ntd);
+  --color-ntd-text: var(--c-ntd-text);
+  --color-ntd-c: var(--c-ntd-c);
+  --color-idr-card: var(--c-idr-card);
+  --color-ntd-card: var(--c-ntd-card);
+}
+
+/* Typography scale (DESIGN.md › Typography) */
+@utility t-display {
+  font-size: 34px;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variant-numeric: tabular-nums;
+}
+@utility t-amount-lg {
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+  font-variant-numeric: tabular-nums;
+}
+@utility t-amount-md {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+@utility t-amount-sm {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.3;
+  font-variant-numeric: tabular-nums;
+}
+@utility t-headline-lg {
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: -0.01em;
+}
+@utility t-headline-md {
+  font-size: 20px;
+  font-weight: 700;
+  line-height: 1.3;
+}
+@utility t-title {
+  font-size: 17px;
+  font-weight: 600;
+  line-height: 1.35;
+}
+@utility t-body-lg {
+  font-size: 16px;
+  line-height: 1.5;
+}
+@utility t-body {
+  font-size: 15px;
+  line-height: 1.5;
+}
+@utility t-body-sm {
+  font-size: 13px;
+  line-height: 1.4;
+}
+@utility t-label-lg {
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+@utility t-label {
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.2;
+}
+@utility t-caps {
+  font-size: 11px;
+  font-weight: 600;
+  line-height: 1.2;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+@layer base {
+  html,
+  body,
+  #root {
+    min-height: 100%;
+  }
+  body {
+    margin: 0;
+    background: var(--c-bg);
+    color: var(--c-ink);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: transparent;
+    overscroll-behavior-y: none;
+  }
+  input,
+  select,
+  textarea {
+    font-size: 16px; /* stops iOS Safari from zooming on focus */
+  }
+  button {
+    cursor: pointer;
+  }
+}
+
+/* With the "default" status bar style iOS reports a 0 inset, so always keep a little air on top. */
+.pt-safe {
+  padding-top: calc(env(safe-area-inset-top) + 8px);
+}
+.pb-safe {
+  padding-bottom: env(safe-area-inset-bottom);
+}
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+@keyframes sheet-up {
+  from {
+    transform: translateY(100%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes fade-in {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes toast-in {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.anim-sheet {
+  animation: sheet-up 0.28s cubic-bezier(0.2, 0.8, 0.2, 1);
+}
+.anim-fade {
+  animation: fade-in 0.2s ease-out;
+}
+.anim-toast {
+  animation: toast-in 0.22s ease-out;
+}
+/* Opening animation (components/IntroSplash.tsx) */
+@keyframes intro-hug {
+  0% {
+    transform: scale(1);
+  }
+  22% {
+    transform: scale(0.9, 0.86);
+  }
+  50% {
+    transform: scale(1.08, 1.1);
+  }
+  72% {
+    transform: scale(0.97);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+@keyframes intro-twinkle {
+  0%,
+  100% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  45% {
+    opacity: 1;
+    transform: scale(1) rotate(45deg);
+  }
+}
+@keyframes intro-rise {
+  from {
+    opacity: 0;
+    transform: translate(-50%, 12px);
+  }
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+@keyframes intro-leave {
+  to {
+    opacity: 0;
+    transform: scale(1.06);
+  }
+}
+.intro-hug {
+  transform-origin: 50% 85%;
+  animation: intro-hug 0.75s cubic-bezier(0.3, 0.7, 0.4, 1) 0.05s both;
+}
+.intro-spark {
+  opacity: 0;
+  animation: intro-twinkle 0.9s ease-in-out both;
+}
+.intro-rise {
+  transform: translate(-50%, 0);
+  animation: intro-rise 0.5s ease-out 0.35s both;
+}
+.intro-leave {
+  animation: intro-leave 0.35s ease-in forwards;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .anim-sheet,
+  .anim-fade,
+  .anim-toast,
+  .intro-hug,
+  .intro-spark,
+  .intro-rise {
+    animation: none;
+  }
+  .intro-leave {
+    animation-duration: 0.15s;
+  }
+}

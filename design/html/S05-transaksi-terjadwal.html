@@ -1,0 +1,386 @@
+<!DOCTYPE html>
+
+<html lang="id"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+<title>Kantong - Transaksi Terjadwal</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols Outlined -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Tailwind Configuration -->
+<script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          "colors": {
+            "income": "#15803D",
+            "on-primary": "#FFFFFF",
+            "tertiary": "#000000",
+            "warning-container": "#FEF3C7",
+            "expense-container": "#FEE2E2",
+            "on-error": "#ffffff",
+            "secondary": "#515f74",
+            "on-tertiary-fixed-variant": "#55442d",
+            "error-container": "#ffdad6",
+            "interest": "#047857",
+            "inverse-on-surface": "#f3f0f1",
+            "secondary-fixed": "#d5e3fc",
+            "text-primary": "#0F172A",
+            "outline-variant": "#c6c6cd",
+            "on-error-container": "#93000a",
+            "surface-container-highest": "#e5e2e3",
+            "on-secondary-fixed": "#0d1c2e",
+            "on-tertiary-container": "#968065",
+            "on-primary-fixed": "#141b2b",
+            "warning": "#B45309",
+            "tertiary-container": "#261906",
+            "transfer": "#475569",
+            "surface-container": "#f0edee",
+            "on-surface": "#1b1b1d",
+            "on-background": "#1b1b1d",
+            "interest-container": "#D1FAE5",
+            "surface": "#FFFFFF",
+            "secondary-fixed-dim": "#b9c7df",
+            "surface-container-high": "#eae7e9",
+            "primary": "#000000",
+            "on-tertiary-fixed": "#261906",
+            "tertiary-fixed-dim": "#dcc2a4",
+            "on-secondary": "#ffffff",
+            "on-secondary-fixed-variant": "#3a485b",
+            "on-primary-fixed-variant": "#404758",
+            "error": "#ba1a1a",
+            "currency-idr-container": "#E0F2FE",
+            "text-disabled": "#94A3B8",
+            "currency-ntd": "#7C3AED",
+            "surface-dim": "#dcd9db",
+            "surface-bright": "#fcf8fa",
+            "surface-muted": "#EEF0F4",
+            "surface-variant": "#e5e2e3",
+            "on-secondary-container": "#57657a",
+            "primary-fixed": "#dce2f7",
+            "background": "#F4F5F9",
+            "on-surface-variant": "#45464c",
+            "on-primary-container": "#7d8497",
+            "currency-ntd-text": "#6D28D9",
+            "tertiary-fixed": "#f9debf",
+            "on-accent": "#FFFFFF",
+            "inverse-surface": "#303031",
+            "expense": "#B91C1C",
+            "surface-container-lowest": "#ffffff",
+            "secondary-container": "#d5e3fc",
+            "primary-fixed-dim": "#c0c6db",
+            "surface-tint": "#575e70",
+            "primary-container": "#141b2b",
+            "inverse-primary": "#c0c6db",
+            "currency-ntd-container": "#EDE9FE",
+            "outline": "#E3E6EC",
+            "surface-container-low": "#f6f3f4",
+            "on-tertiary": "#ffffff",
+            "text-secondary": "#475569",
+            "currency-idr": "#0369A1"
+          },
+          "borderRadius": {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          "spacing": {
+            "space-xs": "4px",
+            "space-sm": "8px",
+            "space-md": "12px",
+            "space-lg": "16px",
+            "space-xl": "24px",
+            "space-2xl": "32px",
+            "margin": "16px",
+            "gutter": "16px"
+          },
+          "fontFamily": {
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "display-amount": ["Plus Jakarta Sans"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "amount-sm": ["Plus Jakarta Sans"],
+            "amount-lg": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "amount-md": ["Plus Jakarta Sans"],
+            "title-md": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "label-caps": ["Plus Jakarta Sans"]
+          },
+          "fontSize": {
+            "label-lg": ["16px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "label-md": ["13px", { "lineHeight": "1.2", "fontWeight": "600" }],
+            "body-lg": ["16px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "display-amount": ["34px", { "lineHeight": "1.1", "letterSpacing": "-0.02em", "fontWeight": "700" }],
+            "headline-md": ["20px", { "lineHeight": "1.3", "fontWeight": "700" }],
+            "body-md": ["15px", { "lineHeight": "1.5", "fontWeight": "400" }],
+            "amount-sm": ["13px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "amount-lg": ["22px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "body-sm": ["13px", { "lineHeight": "1.4", "fontWeight": "400" }],
+            "amount-md": ["16px", { "lineHeight": "1.3", "fontWeight": "600" }],
+            "title-md": ["17px", { "lineHeight": "1.35", "fontWeight": "600" }],
+            "headline-lg": ["28px", { "lineHeight": "1.2", "letterSpacing": "-0.01em", "fontWeight": "700" }],
+            "label-caps": ["11px", { "lineHeight": "1.2", "letterSpacing": "0.06em", "fontWeight": "600" }]
+          }
+        }
+      }
+    }
+  </script>
+<style>
+    .tabular-nums {
+      font-variant-numeric: tabular-nums;
+    }
+    .material-symbols-outlined {
+      font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      display: inline-block;
+      vertical-align: middle;
+      line-height: 1;
+    }
+  </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-text-primary antialiased min-h-screen flex justify-center selection:bg-primary selection:text-on-primary">
+<!-- iPhone 15 frame constraint (390px x 844px) -->
+<div class="w-full max-w-[390px] min-h-[844px] bg-background flex flex-col relative pb-[96px] shadow-2xl">
+<!-- iOS Status Bar (390px spec) -->
+<header class="w-full px-6 pt-3 pb-1 flex justify-between items-center text-text-primary select-none z-30">
+<span class="font-headline-md text-[15px] font-semibold tracking-tight">9:41</span>
+<div class="flex items-center space-x-1.5 text-text-primary">
+<span class="material-symbols-outlined text-[17px]" data-icon="signal_cellular_alt">signal_cellular_alt</span>
+<span class="material-symbols-outlined text-[17px]" data-icon="wifi">wifi</span>
+<span class="material-symbols-outlined text-[20px]" data-icon="battery_full">battery_full</span>
+</div>
+</header>
+<!-- Top Navigation & Header Segment -->
+<div class="px-margin pt-space-xs pb-space-sm">
+<div class="flex items-center justify-between">
+<div>
+<span class="font-label-caps text-label-caps text-text-secondary uppercase tracking-wider block font-semibold">CATATAN KEUANGAN</span>
+<h1 class="font-headline-lg text-headline-lg text-text-primary font-bold tracking-tight mt-0.5">Transaksi</h1>
+</div>
+<button aria-label="Cari transaksi" class="w-10 h-10 rounded-full flex items-center justify-center text-text-primary hover:bg-surface-muted active:scale-95 transition-all" type="button">
+<span class="material-symbols-outlined text-[24px]" data-icon="search">search</span>
+</button>
+</div>
+<!-- Segmented Control: Riwayat / Terjadwal -->
+<nav aria-label="Filter Tipe Transaksi" class="mt-space-md p-1 bg-surface-muted rounded-xl flex items-center gap-1 border border-outline/40">
+<button class="flex-1 py-1.5 rounded-lg text-center font-label-md text-label-md text-text-secondary hover:text-text-primary transition-colors" type="button">
+          Riwayat
+        </button>
+<button class="flex-1 py-1.5 rounded-lg text-center font-label-md text-label-md text-text-primary bg-surface shadow-sm font-semibold transition-all" type="button">
+          Terjadwal
+        </button>
+</nav>
+</div>
+<!-- Main Content Canvas -->
+<main class="flex-1 px-margin pb-6">
+<!-- Summary Card (Ringkasan Komitmen Terjadwal) -->
+<section aria-labelledby="summary-heading" class="bg-surface rounded-2xl border border-outline p-space-md shadow-sm">
+<h2 class="sr-only" id="summary-heading">Ringkasan Komitmen Terjadwal</h2>
+<div class="grid grid-cols-2 divide-x divide-outline items-center">
+<!-- Column 1: Sisa Oktober -->
+<div class="pr-space-md flex flex-col justify-center">
+<span class="font-label-caps text-label-caps text-text-secondary block font-semibold mb-1">Sisa Oktober</span>
+<div class="font-amount-lg text-amount-lg text-expense tabular-nums font-bold leading-none">
+              −Rp65.000
+            </div>
+<span class="font-body-sm text-[11px] text-text-secondary mt-1">1 pembayaran jatuh tempo</span>
+</div>
+<!-- Column 2: November -->
+<div class="pl-space-md flex flex-col justify-center space-y-1">
+<span class="font-label-caps text-label-caps text-text-secondary block font-semibold">November</span>
+<div class="flex items-center justify-between gap-1 text-[12px]">
+<span class="font-body-sm text-[12px] text-text-secondary">Keluar</span>
+<span class="font-amount-sm text-expense tabular-nums font-semibold tracking-tight text-right">−NT$5.000 · −Rp165.000</span>
+</div>
+<div class="flex items-center justify-between gap-1 text-[12px]">
+<span class="font-body-sm text-[12px] text-text-secondary">Masuk</span>
+<span class="font-amount-sm text-income tabular-nums font-semibold text-right">+NT$32.000</span>
+</div>
+</div>
+</div>
+</section>
+<!-- Section: PENGELUARAN RUTIN -->
+<section aria-labelledby="section-pengeluaran" class="mt-space-lg">
+<h3 class="font-label-caps text-label-caps text-text-secondary font-semibold uppercase tracking-wider px-1 mb-2" id="section-pengeluaran">
+          PENGELUARAN RUTIN
+        </h3>
+<div class="bg-surface rounded-2xl border border-outline overflow-hidden shadow-sm divide-y divide-outline">
+<!-- Row 1: Langganan Streaming -->
+<article class="p-space-md flex items-center justify-between hover:bg-surface-bright active:bg-surface-muted transition-colors cursor-pointer">
+<div class="flex items-center space-x-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-currency-ntd-container flex items-center justify-center text-currency-ntd-text shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="play_circle">play_circle</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-[15px] font-semibold text-text-primary leading-tight truncate">Langganan streaming</h4>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-body-sm text-text-secondary text-[12px]">Tiap tgl 28 · BCA</span>
+</div>
+<div class="flex items-center space-x-1.5 mt-1.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-label-md font-semibold bg-surface-muted text-text-secondary border border-outline">
+                    Konfirmasi dulu
+                  </span>
+<span class="material-symbols-outlined text-[14px] text-text-disabled" data-icon="event_repeat">event_repeat</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="font-amount-md text-amount-md text-expense tabular-nums font-bold">
+                −Rp65.000
+              </div>
+<div class="font-body-sm text-[12px] text-text-secondary mt-0.5">
+                28 Okt · 4 hari lagi
+              </div>
+</div>
+</article>
+<!-- Row 2: Sewa Kamar -->
+<article class="p-space-md flex items-center justify-between hover:bg-surface-bright active:bg-surface-muted transition-colors cursor-pointer">
+<div class="flex items-center space-x-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-secondary-container flex items-center justify-center text-primary leading-none shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="bed">bed</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-[15px] font-semibold text-text-primary leading-tight truncate">Sewa kamar</h4>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-body-sm text-text-secondary text-[12px]">Tiap tgl 1 · Bank NT$</span>
+</div>
+<div class="flex items-center space-x-1.5 mt-1.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-label-md font-semibold bg-currency-idr-container text-currency-idr">
+                    Otomatis
+                  </span>
+<span class="material-symbols-outlined text-[14px] text-text-disabled" data-icon="event_repeat">event_repeat</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="font-amount-md text-amount-md text-expense tabular-nums font-bold">
+                −NT$5.000
+              </div>
+<div class="font-body-sm text-[12px] text-text-secondary mt-0.5">
+                1 Nov · 8 hari lagi
+              </div>
+</div>
+</article>
+<!-- Row 3: Paket Data -->
+<article class="p-space-md flex items-center justify-between hover:bg-surface-bright active:bg-surface-muted transition-colors cursor-pointer">
+<div class="flex items-center space-x-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-surface-muted flex items-center justify-center text-transfer leading-none shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="wifi">wifi</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-[15px] font-semibold text-text-primary leading-tight truncate">Paket data</h4>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-body-sm text-text-secondary text-[12px]">Tiap tgl 23 · BCA</span>
+</div>
+<div class="flex items-center space-x-1.5 mt-1.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-label-md font-semibold bg-surface-muted text-text-secondary border border-outline">
+                    Konfirmasi dulu
+                  </span>
+<span class="material-symbols-outlined text-[14px] text-text-disabled" data-icon="event_repeat">event_repeat</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="font-amount-md text-amount-md text-expense tabular-nums font-bold">
+                −Rp100.000
+              </div>
+<div class="font-body-sm text-[12px] text-text-secondary mt-0.5">
+                23 Nov · 30 hari lagi
+              </div>
+</div>
+</article>
+</div>
+</section>
+<!-- Section: PEMASUKAN RUTIN -->
+<section aria-labelledby="section-pemasukan" class="mt-space-lg">
+<h3 class="font-label-caps text-label-caps text-text-secondary font-semibold uppercase tracking-wider px-1 mb-2" id="section-pemasukan">
+          PEMASUKAN RUTIN
+        </h3>
+<div class="bg-surface rounded-2xl border border-outline overflow-hidden shadow-sm">
+<!-- Row 1: Gaji -->
+<article class="p-space-md flex items-center justify-between hover:bg-surface-bright active:bg-surface-muted transition-colors cursor-pointer">
+<div class="flex items-center space-x-space-md min-w-0">
+<div class="w-10 h-10 rounded-xl bg-interest-container flex items-center justify-center text-income leading-none shrink-0">
+<span class="material-symbols-outlined text-[22px]" data-icon="payments">payments</span>
+</div>
+<div class="min-w-0">
+<h4 class="font-title-md text-[15px] font-semibold text-text-primary leading-tight truncate">Gaji</h4>
+<div class="flex items-center space-x-1.5 mt-0.5">
+<span class="font-body-sm text-text-secondary text-[12px]">Tiap tgl 5 · Bank NT$</span>
+</div>
+<div class="flex items-center space-x-1.5 mt-1.5">
+<span class="inline-flex items-center px-1.5 py-0.5 rounded text-[10px] font-label-md font-semibold bg-surface-muted text-text-secondary border border-outline">
+                    Konfirmasi dulu
+                  </span>
+<span class="material-symbols-outlined text-[14px] text-text-disabled" data-icon="event_repeat">event_repeat</span>
+</div>
+</div>
+</div>
+<div class="text-right shrink-0 pl-2">
+<div class="font-amount-md text-amount-md text-income tabular-nums font-bold">
+                +NT$32.000
+              </div>
+<div class="font-body-sm text-[12px] text-text-secondary mt-0.5">
+                5 Nov · 12 hari lagi
+              </div>
+</div>
+</article>
+</div>
+</section>
+<!-- Action Button -->
+<div class="mt-space-lg">
+<button class="w-full h-[52px] bg-surface-muted hover:bg-outline/60 active:scale-[0.99] text-text-primary font-label-lg text-label-lg rounded-xl flex items-center justify-center space-x-2 transition-all border border-outline/50" type="button">
+<span class="material-symbols-outlined text-[20px]" data-icon="add">add</span>
+<span>Tambah Jadwal</span>
+</button>
+</div>
+</main>
+<!-- Bottom Navigation Bar (Kantong Blueprint Shell) -->
+<nav aria-label="Navigasi Utama" class="fixed bottom-0 left-0 right-0 w-full max-w-[390px] mx-auto z-50 bg-surface border-t border-outline/60 pt-space-xs pb-6 px-space-xs flex justify-around items-end">
+<!-- 1. Beranda -->
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary active:scale-95 transition-all w-16 py-1" href="#beranda">
+<span class="material-symbols-outlined text-[24px]" data-icon="home">home</span>
+<span class="font-label-caps text-[10px] mt-1 font-semibold">Beranda</span>
+</a>
+<!-- 2. Transaksi (ACTIVE) -->
+<a class="flex flex-col items-center justify-center text-primary font-bold active:scale-95 transition-all w-16 py-1" href="#transaksi">
+<span class="material-symbols-outlined text-[24px]" data-icon="receipt_long" style="font-variation-settings: 'FILL' 1;">receipt_long</span>
+<span class="font-label-caps text-[10px] mt-1 font-bold">Transaksi</span>
+</a>
+<!-- 3. Floating Center Action Button (Tambah) -->
+<div class="relative -top-2 flex flex-col items-center justify-center px-1">
+<button aria-label="Tambah Transaksi Cepat" class="w-12 h-12 rounded-full bg-primary text-on-primary flex items-center justify-center shadow-lg active:scale-90 transition-transform" type="button">
+<span class="material-symbols-outlined text-[26px]" data-icon="add">add</span>
+</button>
+</div>
+<!-- 4. Rekening -->
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary active:scale-95 transition-all w-16 py-1" href="#rekening">
+<span class="material-symbols-outlined text-[24px]" data-icon="account_balance_wallet">account_balance_wallet</span>
+<span class="font-label-caps text-[10px] mt-1 font-semibold">Rekening</span>
+</a>
+<!-- 5. Laporan -->
+<a class="flex flex-col items-center justify-center text-text-secondary hover:text-primary active:scale-95 transition-all w-16 py-1" href="#laporan">
+<span class="material-symbols-outlined text-[24px]" data-icon="bar_chart">bar_chart</span>
+<span class="font-label-caps text-[10px] mt-1 font-semibold">Laporan</span>
+</a>
+</nav>
+<!-- iOS Home Indicator bar -->
+<div class="fixed bottom-1 left-1/2 -translate-x-1/2 w-32 h-1 bg-black/25 rounded-full pointer-events-none z-50"></div>
+</div>
+</body></html>

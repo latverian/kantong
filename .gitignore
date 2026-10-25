@@ -1,0 +1,12 @@
+node_modules
+dist
+dev-dist
+*.local
+.DS_Store
+.env
+.env.*
+.vercel
+.netlify
+.wrangler
+test-results
+playwright-report
